@@ -1,0 +1,744 @@
+@@include('../partial/head.html', {
+	"css": [
+	'../assets/plugins/bootstrap-star-rating/css/star-rating.min.css',
+	'../assets/plugins/bootstrap-star-rating/themes/krajee-fas/theme.min.css',
+
+	'../assets/plugins/apexcharts/dist/apexcharts.css',
+
+	'../assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css',
+
+	"../assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
+	"../assets/plugins/bootstrap-table/dist/bootstrap-table.min.css"
+
+]})
+	<!-- BEGIN #app -->
+	<div id="app" class="p-5">
+
+		<!-- BEGIN #content -->
+		<div id="content">
+			<div class="d-flex align-items-center justify-content-between mb-2">
+				<h4 class="mb-0">실시간 분석</h4>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">수동 파일 분석</a></li>
+					<li class="breadcrumb-item"><a href="#">분석 업로드</a></li>
+					<li class="breadcrumb-item active">실시간 분석</li>
+				</ul>
+			</div>
+			
+				<section class="row">
+					<!-- 실시간 분석 화면 -->
+					<article class="col-8">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title mb-2">실시간 분석 화면</h5>
+								<article 
+									style="background: black;
+										width: 100%;
+										height: 630px;">
+								</article>
+								<div class="card-arrow">
+									<div class="card-arrow-top-left"></div>
+									<div class="card-arrow-top-right"></div>
+									<div class="card-arrow-bottom-left"></div>
+									<div class="card-arrow-bottom-right"></div>
+								</div>
+							</div>
+						</div>
+					</article>
+					<!-- 분석 환경 정보 -->
+					<article class="col-4">
+						<div class="card" style="height: 100%">
+							<div class="card-body">
+								<h5 class="card-title mb-3">분석 환경 정보</h5>
+								<article>
+									<h6>
+										<i class="bi bi-clock"></i> 04:23
+									</h6>
+									<!-- striped & animated -->
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 33%">33%</div>
+									</div>
+									<div class="d-flex justify-content-center mt-2">
+										<button  class="btn btn-sm btn-danger me-2">분석 중지</button>
+										<button  class="btn btn-sm btn-success">분석시간 연장</button>
+									</div>
+								</article>
+								
+								<table class="table table-sm table-th-dark border border-radius mt-4" style="font-size: 12px;">
+									<tbody>
+										<tr>
+											<th>운영 체제</th>
+											<td>Windows 10 64Bit</td>
+										</tr>
+										<tr>
+											<th>Microsoft Office</th>
+											<td>Microsoft Office 2016</td>
+										</tr>
+										<tr>
+											<th>한글과 컴퓨터</th>
+											<td>HWP Neo</td>
+										</tr>
+										<tr>
+											<th>PDF</th>
+											<td>Adobe PDF ReaderDC</td>
+										</tr>
+										<tr>
+											<th>웹 브라우저</th>
+											<td>Chrome</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<div class="d-flex mt-4">
+									<div class="w-50 d-flex flex-column align-items-center">
+										<h6 class="text-center">CPU 사용량</h6>
+										<figure class="highchart-cpu">
+											<div id="container"></div>
+										</figure>
+									</div>
+									<div class="w-50 d-flex flex-column align-items-center">
+										<h6 class="text-center">RAM 사용량</h6>
+										<figure class="highchart-cpu">
+											<div id="container2"></div>
+										</figure>
+									</div>
+								</div>
+
+								<div class="card-arrow">
+									<div class="card-arrow-top-left"></div>
+									<div class="card-arrow-top-right"></div>
+									<div class="card-arrow-bottom-left"></div>
+									<div class="card-arrow-bottom-right"></div>
+								</div>
+							</div>
+						</div>
+					</article>
+				</section>
+
+
+				<!-- 실시간 분석 로그 -->
+				<div class="card mt-4">
+					<div class="card-body">
+						<h5 class="card-title mb-2">실시간 분석 로그</h5>
+						<article>
+							<ul class="nav nav-pills mb-3" id="pills-tab">
+								<li class="nav-item">
+									<a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home">프로세스 정보</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile">파일 정보</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact">네트워크 정보</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact2">레지스트리 정보</a>
+								</li>
+							</ul>
+							<div class="tab-content col-8" id="pills-tabContent">
+								<!-- 프로세스 정보 -->
+								<div class="tab-pane fade show active" id="pills-home">
+									<table class="table table-dark mb-0 table-bordered">
+										<thead class="text-center">
+											<tr>
+												<th>PID</th>
+												<th>Path</th>
+												<th>Action</th>
+												<th>Time</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="text-center">
+													620
+												</td>
+												<td class="text-left">
+													C:\Windows\System32\svchost.exe
+												</td>
+												<td class="text-center">
+													Terminated
+												</td>
+												<td class="text-center">
+													939028705
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													620
+												</td>
+												<td class="text-left">
+													C:\Windows\System32\svchost.exe
+												</td>
+												<td class="text-center">
+													Create
+												</td>
+												<td class="text-center">
+													939025070
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													920
+												</td>
+												<td class="text-left">
+													C:\Windows\System32\SearchIndexer.exe
+												</td>
+												<td class="text-center">
+													Create
+												</td>
+												<td class="text-center">
+													939025023
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													1828
+												</td>
+												<td class="text-left">
+													C:\Program Files\Internet Explorer\iexplore.exe
+												</td>
+												<td class="text-center">
+													Create
+												</td>
+												<td class="text-center">
+													939024243
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<!-- 파일 정보 -->
+								<div class="tab-pane fade" id="pills-profile">
+									<table class="table table-dark mb-0 table-bordered">
+										<thead class="text-center">
+											<tr>
+												<th>PID</th>
+												<th>Path</th>
+												<th>Action</th>
+												<th>Data</th>
+												<th>Time</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="text-center">
+													4380
+												</td>
+												<td class="text-left">
+													taskhost.exe
+												</td>
+												<td class="text-center">
+													Delete
+												</td>
+												<td class="text-center">
+													C:\ProgramData\Microsoft\RAC\Temp\sql237.tmp
+												</td>
+												<td class="text-center">
+													939121026
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													4380
+												</td>
+												<td class="text-left">
+													taskhost.exe
+												</td>
+												<td class="text-center">
+													Delete
+												</td>
+												<td class="text-center">
+													C:\ProgramData\Microsoft\RAC\Temp\sql238.tmp
+												</td>
+												<td class="text-center">
+													939121011
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													4380
+												</td>
+												<td class="text-left">
+													taskhost.exe
+												</td>
+												<td class="text-center">
+													Write
+												</td>
+												<td class="text-center">
+													C:\ProgramData\Microsoft\RAC\StateData\RacWmiEventData.dat
+												</td>
+												<td class="text-center">
+													939120995
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													4380
+												</td>
+												<td class="text-left">
+													taskhost.exe
+												</td>
+												<td class="text-center">
+													Write
+												</td>
+												<td class="text-center">
+													C:\ProgramData\Microsoft\RAC\StateData\RacWmiDataBookmarks.dat
+												</td>
+												<td class="text-center">
+													939120995
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													1468
+												</td>
+												<td class="text-left">
+													iexplore.exe
+												</td>
+												<td class="text-center">
+													Delete
+												</td>
+												<td class="text-center">
+													C:\Users\Administrator\AppData\Local\Microsoft\Windows\History\History.IE5\MSHist012021121320211214
+												</td>
+												<td class="text-center">
+													939023104
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													1468
+												</td>
+												<td class="text-left">
+													iexplore.exe
+												</td>
+												<td class="text-center">
+													Delete
+												</td>
+												<td class="text-center">
+													C:\Users\Administrator\AppData\Local\Microsoft\Windows\History\History.IE5\MSHist012021121420211215\index.dat
+												</td>
+												<td class="text-center">
+													939023104
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													1468
+												</td>
+												<td class="text-left">
+													iexplore.exe
+												</td>
+												<td class="text-center">
+													Delete
+												</td>
+												<td class="text-center">
+													C:\Users\Administrator\AppData\Local\Microsoft\Windows\History\History.IE5\MSHist012021121420211215
+												</td>
+												<td class="text-center">
+													939023104
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													1468
+												</td>
+												<td class="text-left">
+													iexplore.exe
+												</td>
+												<td class="text-center">
+													Delete
+												</td>
+												<td class="text-center">
+													C:\Users\Administrator\AppData\Local\Microsoft\Windows\History\History.IE5\MSHist012021121320211214\index.dat
+												</td>
+												<td class="text-center">
+													939023104
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<!-- 네트워크 정보 -->
+								<div class="tab-pane fade" id="pills-contact">
+									<table class="table table-dark mb-0 table-bordered">
+										<thead class="text-center">
+											<tr>
+												<th>PID</th>
+												<th>Path</th>
+												<th>Action</th>
+												<th>Time</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="text-center">
+													572
+												</td>
+												<td class="text-left">
+													svchost.exe
+												</td>
+												<td class="text-center">
+													DNS Event
+												</td>
+												<td class="text-center">
+													939241287
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													4484
+												</td>
+												<td class="text-left">
+													winvnc.exe
+												</td>
+												<td class="text-center">
+													Socket Event
+												</td>
+												<td class="text-center">
+													939230804
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<!-- 레지스트리 정보 -->
+								<div class="tab-pane fade" id="pills-contact2">
+									<table class="table table-dark mb-0 table-bordered">
+										<thead class="text-center">
+											<tr>
+												<th>PID</th>
+												<th>Path</th>
+												<th>Action</th>
+												<th>Time</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="text-center">
+													1112
+												</td>
+												<td class="text-left">
+													Explorer.EXE
+												</td>
+												<td class="text-center">
+													HKCU\Software\Microsoft\Windows\CurrentVersion\Explor
+												</td>
+												<td class="text-center">
+													939351346
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													4
+												</td>
+												<td class="text-left">
+													System
+												</td>
+												<td class="text-center">
+													HKLM\SYSTEM\ControlSet001\Control\Nsi\{eb004a03-9b1a-11d4-9123-0050047759bc}\24 -&
+												</td>
+												<td class="text-center">
+													939288135
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													4
+												</td>
+												<td class="text-left">
+													System
+												</td>
+												<td class="text-center">
+													HKLM\SYSTEM\ControlSet001\Control\Nsi\{eb004a03-9b1a-11d4-9123-0050047759
+												</td>
+												<td class="text-center">
+													939288119
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													1112
+												</td>
+												<td class="text-left">
+													Explorer.EXE
+												</td>
+												<td class="text-center">
+													HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Start
+												</td>
+												<td class="text-center">
+													939231506
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													4232
+												</td>
+												<td class="text-left">
+													Select.Html.exe
+												</td>
+												<td class="text-center">
+													HKCU\Software\Microsoft\Direct3D\MostRecentApplication -&gt; Select.Html.exe
+												</td>
+												<td class="text-center">
+													939231350
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													920
+												</td>
+												<td class="text-left">
+													SearchIndexer.exe
+												</td>
+												<td class="text-center">
+													HKLM\SOFTWARE\Microsoft\Windows Search\Gather\Windows\SystemIndex\StreamLog -&gt; 21efee38
+												</td>
+												<td class="text-center">
+													939230976
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</article>
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+					</div>
+				</div>
+
+		</div>
+		
+		<!-- END #content -->
+		
+		@@include('../partial/scroll-top-btn.html')
+	
+	</div>
+	<!-- END #app -->
+
+	<script src="../assets/plugins/highcharts/highcharts.js"></script>
+	<script src="../assets/plugins/highcharts/highcharts-more.js"></script>
+	<script src="../assets/plugins/highcharts/modules/solid-gauge.js"></script>
+
+	@@include('../partial/script.html', {"script": [
+
+		'../assets/plugins/bootstrap-star-rating/js/star-rating.min.js',
+		'../assets/plugins/bootstrap-star-rating/themes/krajee-fas/theme.min.js',
+
+		'../assets/plugins/apexcharts/dist/apexcharts.min.js',
+		'../assets/plugins/jquery-datetimepicker/build/jquery.datetimepicker.full.js',
+
+		
+		"../assets/plugins/datatables.net/js/jquery.dataTables.min.js",
+		"../assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js",
+		"../assets/plugins/bootstrap-table/dist/bootstrap-table.min.js",
+		
+		"../assets/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.js",
+		"../assets/plugins/bootstrap-table/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.js",
+		
+		'../assets/js/demo/common.demo.js',
+		'../assets/js/pages/log/analisys-log.js',
+	]})
+
+	<script>
+		// 시스템 정보 - CPU
+		Highcharts.chart("container", {
+			chart: {
+				type: "area",
+				events: {
+					load: function() {
+						// set up the updating of the chart each second
+						var DetBPS = this.series[0];
+						// setInterval(function () {
+						// 	var x = (new Date()).getTime();
+						// 	DetBPS.addPoint([x, cCPU], true, true);
+						// }, 1000);
+					},
+				},
+			},
+			accessibility: {
+				description: "",
+			},
+			title: {
+				text: '',
+				// style: {
+				//   fontSize: "15px",
+				//   fontFamily: "Poppins,serif",
+				//   fontWeight: "500",
+				// },
+			},
+			// subtitle: {
+			// 		text: 'aa'
+			// },
+			xAxis: {
+				visible: false,
+				type: "datetime",
+				tickPixelInterval: 120,
+			},
+			yAxis: {
+				title: {
+					text: "",
+				},
+				minTickInterval: 0,
+				min: 0,
+				max: 100,
+				labels: {
+					style: {
+						color: "#c3cbe4",
+					},
+				},
+				plotLines: [
+					{
+						value: 0,
+						width: 1,
+						color: "#808080",
+					},
+				],
+			},
+			tooltip: {
+				pointFormat: "ㅁㅁ",
+			},
+			exporting: {
+				enabled: false,
+			},
+			plotOptions: {
+				area: {
+					/*        pointStart: 1932, */
+					marker: {
+						enabled: false,
+						symbol: "circle",
+						radius: 2,
+						states: {
+							hover: {
+								enabled: true,
+							},
+						},
+					},
+				},
+			},
+			legend: {
+				enabled: false,
+			},
+			series: [
+				{
+					name: "CPU",
+					data: (function() {
+						// generate an array of random data
+						var data = [],
+							time = new Date().getTime(),
+							i;
+
+						for (i = -30; i <= 0; i++) {
+							data.push({ x: time + i * 1000, y: 0 });
+						}
+						return data;
+					})(),
+				},
+			],
+		});
+
+		// 시스템 정보 - RAM
+		Highcharts.chart("container2", {
+			chart: {
+				type: "area",
+				events: {
+					load: function() {
+						// set up the updating of the chart each second
+						var DetBPS = this.series[0];
+						// setInterval(function () {
+						// 	var x = (new Date()).getTime();
+						// 	DetBPS.addPoint([x, cCPU], true, true);
+						// }, 1000);
+					},
+				},
+			},
+			accessibility: {
+				description: "",
+			},
+			title: {
+				text: '',
+				// style: {
+				//   fontSize: "15px",
+				//   fontFamily: "Poppins,serif",
+				//   fontWeight: "500",
+				// },
+			},
+			// subtitle: {
+			// 		text: 'aa'
+			// },
+			xAxis: {
+				visible: false,
+				type: "datetime",
+				tickPixelInterval: 120,
+			},
+			yAxis: {
+				title: {
+					text: "",
+				},
+				minTickInterval: 0,
+				min: 0,
+				max: 100,
+				labels: {
+					style: {
+						color: "#c3cbe4",
+					},
+				},
+				plotLines: [
+					{
+						value: 0,
+						width: 1,
+						color: "#808080",
+					},
+				],
+			},
+			tooltip: {
+				pointFormat: "ㅁㅁ",
+			},
+			exporting: {
+				enabled: false,
+			},
+			plotOptions: {
+				area: {
+					/*        pointStart: 1932, */
+					marker: {
+						enabled: false,
+						symbol: "circle",
+						radius: 2,
+						states: {
+							hover: {
+								enabled: true,
+							},
+						},
+					},
+				},
+			},
+			legend: {
+				enabled: false,
+			},
+			series: [
+				{
+					name: "RAM",
+					data: (function() {
+						// generate an array of random data
+						var data = [],
+							time = new Date().getTime(),
+							i;
+
+						for (i = -30; i <= 0; i++) {
+							data.push({ x: time + i * 1000, y: 0 });
+						}
+						return data;
+					})(),
+				},
+			],
+		});
+	</script>
+	

@@ -1,0 +1,77 @@
+//
+//  Sweetalert2
+//
+
+/* CSS Switch */
+input[switch] {
+  display: none;
+  + label {
+    font-size: 1em;
+    line-height: 1;
+    width: 56px;
+    height: 24px;
+    background-color: #ced4da;
+    background-image: none;
+    border-radius: 2rem;
+    padding: 0.16667rem;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    font-weight: 600;
+    transition: all 0.1s ease-in-out;
+    &:before {
+      color: rgba(0, 0, 0, 0.65);
+      content: attr(data-off-label);
+      display: block;
+      font-family: inherit;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 21px;
+      position: absolute;
+      right: 1px;
+      margin: 3px;
+      top: -2px;
+      text-align: center;
+      min-width: 1.66667rem;
+      overflow: hidden;
+      transition: all 0.1s ease-in-out;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      background-color: #eff2f7;
+      box-shadow: none;
+      border-radius: 2rem;
+      height: 20px;
+      width: 20px;
+      top: 2px;
+      transition: all 0.1s ease-in-out;
+    }
+  }
+}
+
+input[switch]:checked + label {
+  background-color: #3cd2a5;
+  &:before {
+    color: #fff;
+    content: attr(data-on-label);
+    right: auto;
+    left: 3px;
+  }
+
+  &:after {
+    left: 33px;
+    background-color: #eff2f7;
+  }
+}
+
+.square-switch {
+  margin-right: 7px;
+  input[switch] + label,
+  input[switch] + label:after {
+    border-radius: 0px;
+  }
+}

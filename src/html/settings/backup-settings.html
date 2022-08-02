@@ -1,0 +1,380 @@
+@@include('../partial/head.html', {
+	"css": [
+		'../assets/plugins/parsleyjs/src/parsley.css',
+		'../assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css',
+
+		"../assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
+		"../assets/plugins/bootstrap-table/dist/bootstrap-table.min.css",
+	
+		'../assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css',
+]})
+
+	<!-- BEGIN #app -->
+	<div id="app" class="app">
+		@@include('../partial/header.html')
+		
+		@@include('../partial/sidebar.html', {"settingsClass": "active", "backupSettingsClass": "active"})
+		
+		<!-- BEGIN #content -->
+		<div id="content" class="app-content">
+			<div class="d-flex align-items-center justify-content-between mb-2">
+				<h4 class="mb-0">백업 설정</h4>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">설정</a></li>
+					<li class="breadcrumb-item active">백업 설정</li>
+				</ul>
+			</div>
+			
+			<section class="row">
+				<div class="col-6">
+					<!-- 수동 백업 -->
+					<div class="card backup-manual" style="height: 606px;">
+						<form class="p-4" style="height: 100%;">
+							<h6 class="card-title mb-3">수동 백업</h6>
+							<hr>
+							
+							<section>
+								<!-- 백업 기간 -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">백업 기간</label>
+									<div class="input-group input-daterange" id="">
+										<input id="date_timepicker_start" type="text" class="form-control" placeholder="시작 날짜" />
+										<span class="input-group-text">to</span>
+										<input id="date_timepicker_end" type="text" class="form-control" placeholder="끝 날짜" />
+									</div>
+								</div>
+
+								<label class="text-white mb-2">백업 방법</label>
+
+								<section class="d-flex">
+									<article class="w-50">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input hand" name="customRadio" type="radio" id="customRadio1" value="0" checked="" data-parsley-multiple="customRadio">
+											<label class="custom-control-label hands" for="customRadio1">Local</label>
+										</div>
+
+										<ul class="px-3 pt-2 backup-course-1">
+											<!-- 백업 경로 -->
+											<li class="form-group">
+												<label class="text-white mb-1">백업 경로</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+										</ul>
+										
+									</article>
+									<article class="w-50">
+										<div class="form-check form-check-inline">
+											<input id="customRadio2" class="form-check-input hand" name="customRadio" type="radio" value="1" data-parsley-multiple="customRadio">
+											<label class="custom-control-label hands" for="customRadio2">FTP</label>
+										</div>
+
+										<ul class="px-3 pt-2 backup-course-2">
+											<!-- 백업 경로 (IP/Port) -->
+											<li class="form-group">
+												<label class="text-white mb-1">백업 경로 (IP/Port)</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+
+											<!-- SubDirectory  -->
+											<li class="form-group">
+												<label class="text-white mb-1">SubDirectory</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+
+											<!-- ID -->
+											<li class="form-group">
+												<label class="text-white mb-1">ID</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+
+											<!-- Passwrod -->
+											<li class="form-group">
+												<label class="text-white mb-1">Passwrod</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+										</ul>
+
+									</article>
+								</section>
+							</section>
+							
+							<div class="d-flex justify-content-center mt-5">
+								<button class="btn btn-success message-success px-4">적용</button>
+							</div>
+						</form>
+						
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+		
+					</div>
+				</div>
+
+				<div class="col-6">
+					<!-- 스케줄 백업 -->
+					<div class="card backup-schedule">
+						<form class="p-4">
+							<h6 class="card-title mb-3">스케줄 백업</h6>
+							<hr>
+							
+							<section>
+								<!-- 백업 기간 -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">디스크 용량 제한</label>
+									<div class="col-1 me-2">
+										<input type="number" class="form-control">
+									</div>
+									<span>% 이하 일 경우</span>
+								</div>
+
+								<!-- 기간 제한 -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">디스크 용량 제한</label>
+									<div class="col-1 me-2">
+										<input type="number" class="form-control">
+									</div>
+									<span>개월 이전 데이터</span>
+								</div>
+
+								<label class="text-white mb-2">백업 방법</label>
+
+								<section class="d-flex">
+									<article class="w-50">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input hand" name="customRadio2" type="radio" id="customRadio3" value="0" checked="" data-parsley-multiple="customRadio">
+											<label class="custom-control-label hands" for="customRadio3">Local</label>
+										</div>
+
+										<ul class="px-3 pt-2 backup-course-3">
+											<!-- 백업 경로 -->
+											<li class="form-group">
+												<label class="text-white mb-1">백업 경로</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+										</ul>
+										
+									</article>
+									<article class="w-50">
+										<div class="form-check form-check-inline">
+											<input id="customRadio4" class="form-check-input hand" name="customRadio2" type="radio" value="1" data-parsley-multiple="customRadio">
+											<label class="custom-control-label hands" for="customRadio4">FTP</label>
+										</div>
+
+										<ul class="px-3 pt-2 backup-course-4">
+											<!-- 백업 경로 (IP/Port) -->
+											<li class="form-group">
+												<label class="text-white mb-1">백업 경로 (IP/Port)</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+
+											<!-- SubDirectory  -->
+											<li class="form-group">
+												<label class="text-white mb-1">SubDirectory</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+
+											<!-- ID -->
+											<li class="form-group">
+												<label class="text-white mb-1">ID</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+
+											<!-- Passwrod -->
+											<li class="form-group">
+												<label class="text-white mb-1">Passwrod</label>
+												<div class="flex-grow-1 d-flex">
+													<input 
+														class="form-control disable-targets" 
+														type="text range"
+														placeholder=""/>
+												</div>
+											</li>
+										</ul>
+
+									</article>
+								</section>
+							</section>
+							
+							<div class="d-flex justify-content-center mt-2">
+								<button class="btn btn-success message-success px-4">적용</button>
+							</div>
+						</form>
+						
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+		
+					</div>
+				</div>
+
+
+
+			</section>
+
+		</div>
+		<!-- END #content -->
+		
+		@@include('../partial/scroll-top-btn.html')
+	</div>
+	<!-- END #app -->
+	
+	<!-- 
+		input mask - 인풋 데이터 입력 형식 제어
+		parsley js, form-validation.init - 폼 유효성 검사 
+	-->
+	@@include('../partial/script.html', {"script": [
+		'../assets/plugins/sweetalert2/dist/sweetalert2.all.min.js',
+		'../assets/js/demo/sweet-alert.demo.js',
+
+		'../assets/plugins/inputmask/dist/jquery.inputmask.min.js',
+
+		'../assets/plugins/parsleyjs/dist/parsley.min.js',
+		'../assets/plugins/parsleyjs/dist/i18n/ko.js',
+		'../assets/js/form-validation.init.js',
+
+		'../assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js',
+
+		'../assets/plugins/jquery-datetimepicker/build/jquery.datetimepicker.full.js',
+
+		"../assets/plugins/datatables.net/js/jquery.dataTables.min.js",
+		"../assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js",
+		"../assets/plugins/bootstrap-table/dist/bootstrap-table.min.js",
+		
+		"../assets/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.js",
+		"../assets/plugins/bootstrap-table/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.js",
+
+		'../assets/js/demo/common.demo.js',
+	]})
+
+	<script>
+		// datetime picker
+		jQuery.datetimepicker.setLocale("kr");
+
+		jQuery(function() {
+			jQuery("#date_timepicker_start").datetimepicker({
+				i18n: {
+					de: {
+						months: [
+							"1월",
+							"2월",
+							"3월",
+							"4월",
+							"5월",
+							"6월",
+							"7월",
+							"8월",
+							"9월",
+							"10월",
+							"11월",
+							"12월",
+						],
+						dayOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+					},
+				},
+				format: "Y/m/d H:i",
+				onShow: function(ct) {
+					this.setOptions({
+						maxDate: jQuery("#date_timepicker_end").val()
+							? jQuery("#date_timepicker_end").val()
+							: false,
+					});
+				},
+			});
+			jQuery("#date_timepicker_end").datetimepicker({
+				format: "Y/m/d H:i",
+				onShow: function(ct) {
+					this.setOptions({
+						minDate: jQuery("#date_timepicker_start").val()
+							? jQuery("#date_timepicker_start").val()
+							: false,
+					});
+				},
+			});
+		});
+
+		
+		//수동 백업
+		//라디오 버튼 default 체크 되잇으면 인풋 disable 
+		if($("input[type='radio'][name='customRadio']:checked").val() == 0) {
+			$(".backup-course-2 input").prop("disabled", true)
+
+		} else if($("input[type='radio'][name='customRadio']:checked").val() == 1){
+			$(".backup-course-1 input").prop("disabled", true)
+		}
+		
+		//클릭 시 able, disable
+		$("input:radio[name=customRadio]").on("click", function() {
+			$(".backup-manual .disable-targets").attr("disabled", true);
+			
+			$(this).parent().siblings().find('input').prop("disabled", false);
+		});
+
+		//스케줄 백업
+		//라디오 버튼 default 체크 되잇으면 인풋 disable 
+		if($("input[type='radio'][name='customRadio2']:checked").val() == 0) {
+			$(".backup-course-4 input").prop("disabled", true)
+
+		} else if($("input[type='radio'][name='customRadio2']:checked").val() == 1){
+			$(".backup-course-3 input").prop("disabled", true)
+		}
+		
+		//클릭 시 able, disable
+		$("input:radio[name=customRadio2]").on("click", function() {
+			$(".backup-schedule .disable-targets").attr("disabled", true);
+			
+			console.log($(this));
+			$(this).parent().siblings().find('input').prop("disabled", false);
+		});
+		
+	</script>

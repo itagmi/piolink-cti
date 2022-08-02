@@ -1,0 +1,214 @@
+@@include('../partial/head.html', {
+	"css": [
+		'../assets/plugins/parsleyjs/src/parsley.css',
+		'../assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css',
+
+		"../assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
+		"../assets/plugins/bootstrap-table/dist/bootstrap-table.min.css",
+	
+		'../assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css',
+]})
+
+	<!-- BEGIN #app -->
+	<div id="app" class="app">
+		@@include('../partial/header.html')
+		
+		@@include('../partial/sidebar.html', {"accidentAnalisysClass": "active", "analisysRequestClass": "active"})
+		
+		<!-- BEGIN #content -->
+		<div id="content" class="app-content">
+			<div class="d-flex align-items-center justify-content-between mb-2">
+				<h4 class="mb-0">분석 요청</h4>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">사고 분석</a></li>
+					<li class="breadcrumb-item active">분석 요청</li>
+				</ul>
+			</div>
+			
+			<section class="row">
+				<div class="col-6">
+					<!-- 수동 백업 -->
+					<div class="card backup-manual">
+						<div class="p-4" style="height: 100%;">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input hand" name="customRadio" type="radio" id="customRadio1" value="0"  data-parsley-multiple="customRadio" checked="">
+								<label class="card-title h6 hands" for="customRadio1">수동 파일 분석 요청</label>
+							</div>
+							<hr>
+							
+							<section class="backup-course-1">
+								<!-- 운영 체제 -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">운영 체제</label>
+									<select name="" id="" class="form-select disable-targets">
+										<option value="">Windows 10 64Bit</option>
+										<option value="">Windows 7 64Bit</option>
+									</select>
+								</div>
+
+								<!-- Microsoft Office -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">Microsoft Office</label>
+									<select name="" id="" class="form-select disable-targets">
+										<option value="">Microsoft Office 2019</option>
+										<option value="">Microsoft Office 2018</option>
+										<option value="">Microsoft Office 2017</option>
+										<option value="">Microsoft Office 2016</option>
+										<option value="">Microsoft Office 2015</option>
+										<option value="">Microsoft Office 2014</option>
+										<option value="">Microsoft Office 2013</option>
+									</select>
+								</div>
+
+								<!-- 한글과 컴퓨터 -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">Microsoft Office</label>
+									<select name="" id="" class="form-select disable-targets">
+										<option value="">HWP Neo</option>
+									</select>
+								</div>
+
+								<!-- PDF -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">Microsoft Office</label>
+									<select name="" id="" class="form-select disable-targets">
+										<option value="">Adobe ReaderDC</option>
+										<option value="">Pro</option>
+									</select>
+								</div>
+
+								<!-- 웹 브라우저 -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">웹 브라우저</label>
+									<select name="" id="" class="form-select disable-targets">
+										<option value="">Chrome</option>
+										<option value="">Internet Explorer</option>
+										<option value="">Edge</option>
+									</select>
+								</div>
+
+								<!-- 분석 시간 초 -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">분석 시간 (초)</label>
+									<input type="number" class="form-control disable-targets"/>
+								</div>
+
+								<!-- 파일 분석 -->
+								<div class="d-flex">
+									<label class="text-white col-3">파일 분석</label>
+									<input type="text" class="form-control disable-targets" id="" style="width: 600px">
+									<button class="btn btn-success ms-2 flex-shrink-0 disable-targets" onclick="window.open('./popup-live-analisys.html','popup','width=1620,height=900,scrollbars=no,resizable=no'); return false;">분석 요청</button>
+								</div>
+
+							</section>
+							
+						</div>
+						
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+		
+					</div>
+				</div>
+
+				<div class="col-6">
+					<!-- 사고 분석 (IR Hunter) 요청 -->
+					<div class="card backup-manual">
+						<div class="p-4" style="height: 451px;">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input hand" name="customRadio" type="radio" id="customRadio2" value="1" data-parsley-multiple="customRadio">
+								<label class="card-title h6 hands" for="customRadio2">사고 분석 (IR Hunter) 요청</label>
+							</div>
+							<hr>
+							
+							<section class="backup-course-2">
+								<!-- 사이트 -->
+								<div class="form-group d-flex align-items-center">
+									<label class="text-white col-3">사이트</label>
+									<select name="" id="" class="form-select disable-targets">
+										<option value="">ABC 마트</option>
+									</select>
+								</div>
+
+								<!-- 파일 분석 -->
+								<div class="d-flex">
+									<label class="text-white col-3">파일 분석</label>
+									<input type="text" class="form-control disable-targets" id="" style="width: 600px">
+									<button class="btn btn-success ms-2 flex-shrink-0 disable-targets" onclick="window.open('./popup-live-analisys.html','popup','width=1620,height=900,scrollbars=no,resizable=no'); return false;">분석 요청</button>
+								</div>
+
+							</section>
+							
+						</div>
+						
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+		
+					</div>
+				</div>
+
+
+
+			</section>
+
+		</div>
+		<!-- END #content -->
+		
+		@@include('../partial/scroll-top-btn.html')
+	</div>
+	<!-- END #app -->
+	
+	<!-- 
+		input mask - 인풋 데이터 입력 형식 제어
+		parsley js, form-validation.init - 폼 유효성 검사 
+	-->
+	@@include('../partial/script.html', {"script": [
+		'../assets/plugins/sweetalert2/dist/sweetalert2.all.min.js',
+		'../assets/js/demo/sweet-alert.demo.js',
+
+		'../assets/plugins/inputmask/dist/jquery.inputmask.min.js',
+
+		'../assets/plugins/parsleyjs/dist/parsley.min.js',
+		'../assets/plugins/parsleyjs/dist/i18n/ko.js',
+		'../assets/js/form-validation.init.js',
+
+		'../assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js',
+
+		'../assets/plugins/jquery-datetimepicker/build/jquery.datetimepicker.full.js',
+
+		"../assets/plugins/datatables.net/js/jquery.dataTables.min.js",
+		"../assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js",
+		"../assets/plugins/bootstrap-table/dist/bootstrap-table.min.js",
+		
+		"../assets/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.js",
+		"../assets/plugins/bootstrap-table/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.js",
+
+		'../assets/js/demo/common.demo.js',
+	]})
+
+	<script>
+		//수동 백업
+		//라디오 버튼 default 체크 되잇으면 인풋 disable 
+		if($("input[type='radio'][name='customRadio']:checked").val() == 0) {
+			$(".backup-course-2 input, .backup-course-2 select, .backup-course-2 button").prop("disabled", true)
+
+		} else if($("input[type='radio'][name='customRadio']:checked").val() == 1){
+			$(".backup-course-1 input, .backup-course-1 select, .backup-course-1 button").prop("disabled", true)
+		}
+		
+		//클릭 시 able, disable
+		$("input:radio[name=customRadio]").on("click", function() {
+			console.log($(this));
+			$(".backup-manual .disable-targets").attr("disabled", true);
+			
+			$(this).parent().parent().find('input, select, button').prop("disabled", false);
+		});
+		
+	</script>

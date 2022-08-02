@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"@@if (context.htmlAttribute) { @@htmlAttribute}>
+<head>
+	<meta charset="utf-8" />
+	<title>대검찰청 악성코드 분석 시스템 | @@title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<!-- App favicon -->
+	<link rel="shortcut icon" href="../assets/img/favicon.ico">
+	
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="../assets/css/vendor.min.css" rel="stylesheet" />
+	<link href="../assets/css/app.min.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+	@@if (context.css && css.length > 0) {
+		<!-- ================== BEGIN page-css ================== -->
+		@@for (var i = 0; i < css.length; i++) {
+		<link href="`+css[i]+`" rel="stylesheet" />}
+		<!-- ================== END page-css ================== -->
+	}
+</head>
+<body@@if (context.bodyAttr) { @@bodyAttr}>

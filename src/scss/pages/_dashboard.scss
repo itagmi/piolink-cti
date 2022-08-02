@@ -1,0 +1,808 @@
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.app-content {
+  padding: 1rem 2rem !important;
+}
+
+// .show {
+//   display: block;
+// }
+
+.hide {
+  display: none;
+}
+  
+//hover--nav
+#sidebar {
+  backdrop-filter: blur(2.5px);
+}
+
+// badge BackGroundColor
+.badge {
+  // type
+  &.smtp {
+    font-size: 12px;
+    color: #fff;
+    background-color: $blue;
+  }
+
+  &.https {
+    font-size: 12px;
+    color: #fff;
+    background-color: $pink;
+  }
+
+  &.http {
+    font-size: 12px;
+    color: #fff;
+    background-color: $green;
+  }
+
+  &.ftp {
+    font-size: 12px;
+    color: #fff;
+    background-color: $indigo;
+  }
+
+  &.sharedfolder {
+    font-size: 12px;
+    color: #fff;
+    background-color: $yellow;
+  }
+
+  &.agent {
+    font-size: 12px;
+    color: #fff;
+    background-color: $purple;
+  }
+
+  &.smb {
+    font-size: 12px;
+    color: #fff;
+    background-color: $orange;
+  }
+
+  &.user {
+    font-size: 12px;
+    color: #fff;
+    background-color: $gray-800;
+  }
+
+  //badge 공통 레벨
+
+  &.badge-success {
+    font-size: 12px;
+  }
+
+  &.badge-danger {
+    font-size: 12px;
+  }
+
+  &.badge-warning {
+    font-size: 12px;
+  }
+
+  &.badge-nomal {
+    background: $gray-400;
+    font-size: 12px;
+  }
+
+  //badge 길이 조정
+  &.badge-overflow-ellipsis {
+    width: 86px;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.rating-input {
+  position: absolute !important;
+}
+
+.hand {
+  cursor: pointer;
+}
+
+.table-align-middle {
+  td {
+    vertical-align: middle;
+  }
+}
+
+.table-th-dark {
+  th {
+    background-color: #35434a9c!important;
+  }
+}
+
+.ratio {
+  height: 182px;
+}
+
+.form-control:disabled,
+.form-control[readonly],
+.form-select:disabled {
+  background-color: rgba(243, 243, 243, 0.14);
+}
+
+.hide--elemt {
+  display: none;
+}
+
+.btn-scroll-top {
+  display: flex !important;
+}
+
+// highchart
+.highcharts-figure .chart-container {
+  width: 50%;
+  height: 140px;
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+  // width: 600px;
+  // margin: 0 auto;
+  display: flex;
+}
+
+.highcharts-data-table table {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.highcharts-data-table caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.highcharts-data-table th {
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+  padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}
+
+.highcharts-axis-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.highcharts-credits {
+  display: none;
+}
+
+// 시스템 정보 차트
+.highchart-cpu,
+.highcharts-data-table table {
+  min-width: 140px;
+  max-width: 140px;
+  // margin: 1em auto;
+}
+
+.highchart-cpu > div {
+  height: 79px;
+}
+
+.highcharts-background {
+  fill: none;
+}
+
+.highcharts-title {
+  fill: rgba(255, 255, 255, 0.75) !important;
+  font-family: Chakra Petch, sans-serif !important;
+}
+
+.default-font-color {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.chart-container {
+  .custom-fill-dark {
+    fill: rgba(255, 255, 255, 0.75) !important;
+  }
+
+  .text-dark {
+    color: #fff !important;
+  }
+
+  .highcharts-axis-labels text {
+    fill: rgba(255, 255, 255, 0.75) !important;
+  }
+}
+
+.apexcharts-legend-text {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.datepicker.datepicker-dropdown {
+  z-index: 10009 !important;
+}
+
+.caption-info {
+  background-color: #798e98 !important;
+}
+
+//계정 설정
+
+
+//대시보드 - 연동 데이터
+.collection-condition {
+  
+  li {
+    flex-basis: 170px;
+    max-width: 170px;
+
+    h3 {
+      font-size: .75rem;
+      border-radius: 4px 4px 0px 0px !important;
+      width: 100%;
+      height: 46px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(7, 181, 205, 0.42) !important;
+
+  
+      span {
+        font-size: .65rem;
+      }
+    }
+
+    h4 {
+      background-color: rgba(116, 120, 141, .24)!important;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      span {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}
+
+//분석 현황 - file 분석
+.file-analisys {
+  li {
+    border: 2px solid rgba(116,120,141,.24)!important;
+    width: 126px;
+    padding: 8px 0px;
+    border-radius: 5px;
+
+    h3 {
+      background-color: rgba(7,181,205,.42)!important;
+    }
+  }
+}
+
+//사이버 위협 정보
+.content-cyber-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > ul {
+    display: flex;
+    justify-content: center;
+
+    > li {
+      font-size: .875rem !important;
+      position: relative;
+
+      &:first-child::after {
+        content: "";
+        width: 2px;
+        height: 46px;
+        background-color: rgba(255, 255, 255, 0.459);;
+        position: absolute;
+        bottom: -46px;
+        left: 50%;
+      }
+
+      &:nth-child(2):after {
+        content: "";
+        width: 2px;
+        height: 28px;
+        background-color: rgba(255, 255, 255, 0.459);;
+        position: absolute;
+        bottom: -28px;
+        left: 50%;
+      }
+
+      &:last-child::after {
+        content: "";
+        width: 2px;
+        height: 46px;
+        background-color: rgba(255, 255, 255, 0.459);;
+        position: absolute;
+        bottom: -46px;
+        left: 50%;
+      }
+    }
+  }
+
+  > h6 {
+    border: 2px solid rgba(255, 255, 255, 0.459);;
+    border-radius: 5px;
+    padding: 8px 4px;
+    margin-top: 28px;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 53px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.459);;
+      left: -53px;
+      top: 16px;
+      position: absolute;
+    }
+
+    &::after {
+      content: "";
+      width: 53px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.459);
+      right: -53px;
+      top: 16px;
+      position: absolute;
+    }
+
+    > i {
+      font-size: 16px;
+    }
+
+    > span {
+      margin-top : 4px;
+    }
+  }
+}
+
+//웹  모니터링 상세정보
+ul.web-monitoring-info {
+  display: flex;
+  justify-content: space-between;
+
+  li {
+    div {
+      position: relative;
+      width: 162px;
+      height: 116px;
+      border-radius: 5px;
+      border: 2px solid ;
+      background-color: #000;
+      }
+    h6 {
+      text-align: center;
+      margin-top: 2px;
+    } 
+  }
+
+  > li:first-child > div::after {
+    position: absolute;
+    content: "";
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    border-right: 0.4em solid white;
+    border-top: 0.4em solid white;
+    transform: rotate(45deg);
+    margin-right: 0.5em;
+    top: 46px;
+    right: -40px;
+  }
+}
+
+//웹 위/변조 모니터링
+.web-monitoring {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    li {
+      div {
+        width: 176px;
+        height: 126px;
+        border-radius: 5px;
+        border: 2px solid ;
+        background-color: #000;
+      }
+
+      h6 {
+        text-align: center;
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+//사이버 위협정보
+.url-analisys-detail {
+  .table-dark {
+    background-color: #35434a9c !important;
+  }
+}
+
+.img-thumnail {
+  width: 182px;
+  height: 130px;
+  border-radius: 5px;
+  border: 2px solid #fff!important;
+  background-color: #000;
+}
+
+#chartSimilarity2 * {
+  overflow: unset;
+
+  .apexcharts-legend {
+    width: 520px;
+    left: -159px !important;
+  }
+}
+
+//시스템 정보 - 행위 분석 시스템, 등
+.content-system-info {
+  ul {
+    text-align: center;
+  }
+  p {
+    margin-bottom: 0 !important;
+  }
+}
+
+//대시보드 - 유사도, 스코어
+.content-ai-analisys {
+  .chart-ai-analisys {
+    position: relative;
+    width: 80px;
+  }
+
+  > ul > li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h6 {
+      font-size: 12px; 
+      margin-top: 6px;
+    }
+  }
+}
+
+.content-ai-analisys + .table-sm>:not(caption)>*>* {
+  padding: 0.15rem !important;
+  vertical-align: middle;
+}
+
+.label-text {
+  position: absolute; 
+  top: -10px; 
+  left: 0px; 
+  width: 100%; 
+  height: 100%; 
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  font-size: 1.3rem;
+  padding-top: 0.6rem;
+}
+
+//정책 설정
+.jumbotron-st-1 {
+  background-color: rgba(116, 120, 141, 0.25) !important;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.jumbotron-st-2 {
+  background-color: rgba(116, 120, 141, 0.15) !important;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.jumbotron-st-3 {
+  background-color: rgba(116, 120, 141, 0.15) !important;
+  padding: .675rem;
+  border-radius: 0.25rem;
+}
+
+.current {
+  color: #3cd2a5 !important;
+}
+
+.chat-list {
+  margin: 0;
+
+  li a {
+    display: block;
+    padding: 14px 16px;
+    color: #74788d;
+    transition: all 0.4s;
+    border-top: 1px solid #eff2f7;
+    border-radius: 4px;
+  }
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.card-arrow {
+  z-index: -1;
+}
+
+.text-indent-hide {
+  text-indent: -999px;
+}
+
+.nav-side--sticky {
+  position: sticky;
+  width: 336px;
+  // left: 50%;
+  // margin-left: -153px; 
+  top: 60px;
+  // position: sticky;
+}
+
+// sweetalert2 custom
+
+.swal2-popup {
+  background-color: rgba(32, 43, 54, 0.85) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.37);
+  background-clip: padding-box !important;
+
+  // .swal2-icon {
+  //   width: 3em !important;
+  //   height: 3em !important;
+  // }
+
+  .swal2-icon {
+    font-size: 0.8rem !important;
+  }
+
+  .swal2-title {
+    font-size: 1.2rem;
+    padding: 1.2em 1em 0;
+  }
+
+  // button basic style
+  .swal2-styled {
+    padding: 0.375rem 1rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 4px !important;
+
+    &.swal2-confirm {
+      background-color: #3cd2a5;
+      border-color: #3cd2a5;
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba(60, 210, 165, 0.5) !important;
+      }
+    }
+
+    &.danger-btn-focus {
+      &:focus {
+        box-shadow: 0 0 0 3px rgba(220, 55, 66, 0.5) !important;
+      }
+    }
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* tags input */
+.tagsinput-warn-message {
+  color: #ff6060;
+}
+
+.highlight-text {
+  color: rgb(60, 210, 165) !important;
+  text-decoration: underline;
+
+  &:hover {
+    color: rgba(60, 210, 165, 0.75);
+  }
+
+  &.none-hover:hover {
+    color: inherit;
+  }
+}
+
+.toggle.ios,
+.toggle-on.ios,
+.toggle-off.ios {
+  border-radius: 20px;
+}
+.toggle.ios .toggle-handle {
+  border-radius: 20px;
+}
+
+// analisys log - tag ui
+.ui-searching-tag {
+  &.alert {
+    padding: 0.3rem 0.5rem;
+    padding-right: 2rem;
+    margin-bottom: 0;
+  }
+
+  &.alert-dismissible .btn-close {
+    padding: 0.5rem 0.5rem;
+    background-size: 0.7rem;
+  }
+}
+
+// 상세분석로그 - 분석요청 버튼 - popover custum
+.popover {
+  max-width: 800px;
+  min-width: 380px;
+}
+
+.popover-header {
+  background-color: rgba(53, 67, 74, 0.88);
+}
+
+.popover-body {
+  background: rgba(53, 67, 74, 0.75);
+}
+
+.bs-popover-auto[data-popper-placement^="top"] > .popover-arrow::after,
+.bs-popover-top > .popover-arrow::after {
+  border-top-color: rgb(103 114 119);
+}
+
+// parsley error messege
+.parsley-errors-list {
+  margin: 6px 0 3px !important;
+}
+
+//log - analisys-log table custom
+.keep-open .caret::before {
+  display: none;
+}
+
+.table-bordered > :not(caption) > * > * {
+  border-width: 0;
+}
+
+//log - analisys-log searching input buttons custom
+.fillter--serching-group {
+  .buttons-toolbar {
+    button {
+      background: none;
+      border-radius: 0;
+      color: #a8b6bc;
+      border-color: #a8b6bc;
+    }
+
+    .keep-open.btn-group {
+      button {
+        border-right: 0;
+      }
+    }
+  }
+}
+
+//mobile size screen
+.mobile-size {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10000;
+  background-color: #2b3c4b;
+
+  .wrapperMessage {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-55%);
+
+    .logo-wrap {
+      width: 264px;
+      position: relative;
+      margin: 0 auto 18px;
+    }
+  }
+
+  .errorInfo {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 136%;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+
+    h1 {
+      font-size: 28px;
+    }
+
+    p {
+      color: hsla(0, 0%, 100%, 0.65);
+      font-size: 28px;
+      width: 100%;
+      margin: 0 auto;
+
+      span {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.bootstrap-table .fixed-table-container .fixed-table-body {
+  overflow-x: unset !important;
+  overflow-y: unset !important;
+}
+
+@media only screen and (min-width: 1280px) {
+  .mobile-size {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1632px) {
+  .highchart-cpu,
+  .highcharts-data-table table {
+    min-width: 136px;
+    max-width: 136px;
+  }
+}
+
+@media only screen and (max-width: 1416px) {
+  .highchart-cpu,
+  .highcharts-data-table table {
+    min-width: 120px;
+    max-width: 120px;
+  }
+}
