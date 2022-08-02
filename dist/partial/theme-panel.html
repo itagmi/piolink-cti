@@ -1,0 +1,204 @@
+
+
+<!-- BEGIN theme-panel -->
+	<div class="app-theme-panel">
+		<div class="app-theme-panel-container">
+			<a href="javascript:;" data-toggle="theme-panel-expand" class="app-theme-toggle-btn"><i class="bi bi-sliders"></i></a>
+			<div class="app-theme-panel-content">
+				<div class="small fw-bold text-white mb-1">Fillter</div>
+				<div class="card mb-3">
+					<!-- BEGIN card-body -->
+					<div class="card-body p-2">
+						<article id="content-filltering" class="content-filltering card p-2 px-3 show" aria-labelledby="fillterBtn">
+							<div class="row">
+								<label for="">조건 검색</label>
+								<div class="col-6">
+									<!-- 전체 분류 -->
+									<div class="form-group mb-0">
+										<select id="def2" class="form-select">
+											<option value="전체" selected="">전체</option>
+											<option value="수집파일">수집파일</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-6">
+									<!-- id 분류 -->
+									<div class="form-group mb-0">
+										<select class="form-select">
+											<option selected="selected" value="id">ID</option>
+											<option value="parent-id">Parent ID</option>
+											<option value="file-name">분석 대상</option>
+											<option value="file-ext">파일 확장자</option>
+											<option value="file-size">파일 크기</option>
+											<option value="md5">Hash(MD5)</option>
+											<option value="vaccine-result">안티 바이러스 결과</option>
+											<option value="sta-rule">정적 분석 결과</option>
+											<option value="dyn-rule">동적 분석 결과</option>
+											<option value="agent-id">EDR ID</option>
+											<option value="agent-name">EDR PC명</option>
+											<option value="agent-group">EDR 그룹명</option>
+											<option value="agent-comment">EDR 설명</option>
+											<option value="url">다운로드 URL</option>
+											<option value="mail-subject">메일 제목</option>
+											<option value="mail-from">보낸 메일주소</option>
+											<option value="mail-to">받은 메일주소</option>
+											<option value="mail-cc">참조 메일 주소</option>
+	<!--                                       
+											<option value="sdfdsf" selected>Bdfsfn</option>
+											<option value="ETH">Ethereum</option>
+											<option value="LTC">litecoin</option> -->
+										</select>
+									</div>
+								</div>
+							</div>
+							<!-- 날짜 설정 -->
+							<div class="row">
+								<div class="col-12">
+									<div class="form-group mt-3 mb-0">
+										<label for="">날짜 설정 :</label>
+										<div class="input-group input-daterange" id="">
+											<input id="date_timepicker_start" type="text" class="form-control" placeholder="시작 날짜" />
+											<span class="input-group-text">to</span>
+											<input id="date_timepicker_end" type="text" class="form-control" placeholder="끝 날짜" />
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- 타입 & 사전탐지 -->
+							<div class="row mt-2">
+								<div class="col-6">
+									<div class="form-group mb-0">
+										<label for="">타입 :</label>
+										<select class="form-select">
+											<option value="" selected="">전체</option>
+											<option value="">SMTP</option>
+											<option value="">HTTP</option>
+											<option value="">HTTPS</option>
+											<option value="">Agent</option>
+											<option value="">User</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="form-group mb-0">
+										<label for="">사전탐지 :</label>
+										<select class="form-select">
+											<option value="" selected="">전체</option>
+											<option value="">정상</option>
+											<option value="">화이트리스트 패턴</option>
+											<option value="">블랙리스트 패턴</option>
+											<option value="">예외 패턴(디지털 서명)</option>
+										</select>
+									</div>
+								</div>
+							</div><!-- end-of-row -->
+
+							<!-- 안티바이러스 & 정적분석 -->
+							<div class="row mt-2">
+								<div class="col-6">
+									<div class="form-group mb-0">
+										<label for="">안티바이러스 :</label>
+										<select class="form-select">
+											<option value="" selected="">전체</option>
+											<option value="">악성</option>
+											<option value="">정상</option>
+											<option value="">미분석</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="form-group mb-0">
+										<label for="">정적 분석 :</label>
+										<select class="form-select">
+											<option value="" selected="">전체</option>
+											<option value="">검사 완료</option>
+											<option value="">미분석</option>
+											<option value="">생략</option>
+											<option value="">타임아웃</option>
+											<option value="">분석 불가</option>
+											<option value="">위험도[1]</option>
+											<option value="">위험도[2]</option>
+											<option value="">위험도[3]</option>
+											<option value="">위험도[4]</option>
+											<option value="">위험도[5]</option>
+											<option value="">악성(위험도[4,5])</option>
+										</select>
+									</div>
+								</div>
+							</div><!-- end-of-row -->
+
+							<!-- 동적분석 & 결과 -->
+							<div class="row mt-2">
+								<div class="col-6">
+									<div class="form-group mb-0">
+										<label for="">동적 분석 :</label>
+										<select class="form-select">
+											<option value="" selected="">전체</option>
+											<option value="">검사 완료</option>
+											<option value="">미분석</option>
+											<option value="">생략</option>
+											<option value="">타임아웃</option>
+											<option value="">분석 불가</option>
+											<option value="">위험도[1]</option>
+											<option value="">위험도[2]</option>
+											<option value="">위험도[3]</option>
+											<option value="">위험도[4]</option>
+											<option value="">위험도[5]</option>
+											<option value="">악성(위험도[4,5])</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="form-group mb-0">
+										<label for="">결과 :</label>
+										<select class="form-select">
+											<option value="" selected="">전체</option>
+											<option value="">정상</option>
+											<option value="">악성</option>
+											<option value="">Unknown</option>
+										</select>
+									</div>
+								</div>
+							</div><!-- end row -->
+
+							<!-- 검색창 -->
+							<div class="row mt-2">
+								<label for="">검색 :</label>
+								<div class="input-group">
+									<div class="flex-fill position-relative">
+										<div class="input-group">
+											<input type="text" class="form-control px-35px" placeholder="Filter orders">
+											<div class="input-group-text position-absolute top-0 bottom-0 bg-none border-0 start-0" style="z-index: 1020;">
+												<i class="fa fa-search opacity-5"></i>
+											</div>
+										</div>
+									</div>
+									<button class="btn btn-outline-default rounded-0 px-4" type="button">
+										<span class="d-none d-md-inline">
+											검색
+										</span>
+									</button>
+								</div>
+							</div>
+						</article>															
+						<!-- END theme-list -->
+					</div>
+					<!-- END card-body -->
+					
+					<!-- BEGIN card-arrow -->
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
+					</div>
+					<!-- END card-arrow -->
+				</div>
+			
+			</div>
+		</div>
+	</div>
+<!-- END theme-panel -->
+	

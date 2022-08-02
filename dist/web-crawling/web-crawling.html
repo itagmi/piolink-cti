@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>대검찰청 악성코드 분석 시스템 | @@title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<!-- App favicon -->
+	<link rel="shortcut icon" href="../assets/img/favicon.ico">
+	
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="../assets/css/vendor.min.css" rel="stylesheet" />
+	<link href="../assets/css/app.min.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+	
+		<!-- ================== BEGIN page-css ================== -->
+		
+		<link href="../assets/plugins/bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" />
+		<link href="../assets/plugins/bootstrap-star-rating/themes/krajee-fas/theme.min.css" rel="stylesheet" />
+		<link href="../assets/plugins/apexcharts/dist/apexcharts.css" rel="stylesheet" />
+		<link href="../assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
+		<link href="../assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+		<link href="../assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" />
+		<!-- ================== END page-css ================== -->
+	
+</head>
+<body>
+	<!-- BEGIN #app -->
+	<div id="app" class="app">
+		<!-- BEGIN #header -->
+		<div id="header" class="app-header">
+			<!-- BEGIN desktop-toggler -->
+			<div class="desktop-toggler">
+				<button id="def" type="button" class="menu-toggler" data-toggle-class="app-sidebar-collapsed" data-dismiss-class="app-sidebar-toggled" data-toggle-target=".app">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+			</div>
+
+			<!-- <button onclick="checkToggle()">aaa</button> -->
+
+			<!-- BEGIN desktop-toggler -->
+			
+			<!-- BEGIN mobile-toggler -->
+			<div class="mobile-toggler">
+				<button type="button" class="menu-toggler" data-toggle-class="app-sidebar-mobile-toggled" data-toggle-target=".app">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+			</div>
+			<!-- END mobile-toggler -->
+			
+			<!-- BEGIN brand -->
+			<div class="brand">
+				<a href="../main/index.html" class="brand-logo">
+					<span class="brand-img">
+						<span class="brand-img-text text-theme">PIOLINK CTI</span>
+					</span>
+					<span class="brand-text">v2.0</span>
+				</a>
+			</div>
+			<!-- END brand -->
+			
+			<!-- BEGIN menu -->
+			<div class="menu">
+				<div class="menu-item ">
+					<a href="#" class="menu-link">
+						<i class="bi bi-clock me-2" style="margin-top: 2px;"></i> 
+						<span id="time">08:00</span>
+					</a>
+				</div>
+				<div class="menu-item dropdown dropdown-mobile-full">
+					<a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
+						<div class="menu-text d-sm-block d-none">
+							guest
+							<i class="fas fa-lg fa-fw me-2 fa-angle-down" style="font-size: 8px;"></i>
+						</div>
+					</a>
+					<div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1" style="width: 226px">
+						<div style="padding: 0 16px;">
+							<table class="table table-bordered table-sm text-center my-2">
+								<thead>
+										<tr>
+												<th>아이디</th>
+												<th>IP</th>
+												<th>시간</th>
+										</tr>
+								</thead>
+								<tbody>
+										<tr>
+												<td>defuguer</td>
+												<td>1.1.1.1</td>
+												<td>2021-10-26 18:13:01</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item d-flex align-items-center" href="../main/login.html">LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
+					</div>
+				</div>
+			</div>
+			<!-- END menu -->
+			
+			<!-- BEGIN menu-search -->
+			<form class="menu-search" method="POST" name="header_search_form">
+				<div class="menu-search-container">
+					<div class="menu-search-icon"><i class="bi bi-search"></i></div>
+					<div class="menu-search-input">
+						<input type="text" class="form-control form-control-lg" placeholder="Search menu..." />
+					</div>
+					<div class="menu-search-icon">
+						<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app"><i class="bi bi-x-lg"></i></a>
+					</div>
+				</div>
+			</form>
+			<!-- END menu-search -->
+		</div>
+		<!-- END #header -->
+
+		<!-- when mobile size resolution warn page -->
+		<div class="mobile-size">
+	<div class="wrapperMessage">
+			<div class="logo-wrap">
+				<img src="../assets/img/login-zombie-zero-logo.svg" alt="">
+			</div>
+			<div class="errorInfo">
+					
+				<h1>Increase the page size</h1>
+				<p>이 페이지는 <br> 해상도 <span>1280px</span>이상 에 최적화 되어있습니다.</p>
+													
+			</div>
+	</div>
+</div>
+		
+				<!-- BEGIN #sidebar -->
+		<div id="sidebar" class="app-sidebar">
+			<!-- BEGIN scrollbar -->
+			<div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
+				<!-- BEGIN menu -->
+				<div class="menu">
+					<div class="menu-header">Administor</div>
+					<!-- 전체 대시보드 -->
+					<div class="menu-item">
+						<a href="../main/index.html" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-cpu"></i></span>
+							<span class="menu-text">Dashboard</span>
+						</a>
+					</div>
+					<!-- 사이트 별 대시보드 -->
+					<div class="menu-item">
+						<a href="../main/index-site.html" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-cpu"></i></span>
+							<span class="menu-text">Dashboard</span>
+						</a>
+					</div>
+					<!-- 사이버 위협정보 -->
+					<div class="menu-item active">
+						<a href="../web-crawling/web-crawling.html" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-bug"></i></span>
+							<span class="menu-text">사이버 위협정보</span>
+						</a>
+					</div>
+					<!-- 웹 위/변조 모니터링 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-window"></i>
+							</span>
+							<span class="menu-text">웹 위/변조 모니터링</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../web-falsify-monitoring/web-monitoring.html" class="menu-link">
+									<span class="menu-text">웹 모니터링</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../web-falsify-monitoring/web-monitoring-info.html" class="menu-link">
+									<span class="menu-text">웹 모니터링 상세 정보</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 사고 분석 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-pie-chart"></i>
+							</span>
+							<span class="menu-text">사고 분석</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../accident-analisys/analisys-request.html" class="menu-link">
+									<span class="menu-text">분석 요청</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../accident-analisys/accident-analisys-log.html" class="menu-link">
+									<span class="menu-text">사고 분석 로그</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 수동 파일 분석 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-folder-check"></i>
+							</span>
+							<span class="menu-text">수동 파일 분석</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../manual-file-analisys/manual-file-upload.html" class="menu-link">
+									<span class="menu-text">수동 파일 업로드</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../manual-file-analisys/manual-file-analisys-log.html" class="menu-link">
+									<span class="menu-text">수동 파일 분석 로그</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 설정 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-gear"></i>
+							</span>
+							<span class="menu-text">설정</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../settings/account-settings.html" class="menu-link">
+									<span class="menu-text">계정 설정</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../settings/connect-settings.html" class="menu-link">
+									<span class="menu-text">연동 설정</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../settings/backup-settings.html" class="menu-link">
+									<span class="menu-text">백업 설정</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../settings/user-detection.html" class="menu-link">
+									<span class="menu-text">사용자 탐지룰</span>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- END menu -->
+			</div>
+			<!-- END scrollbar -->
+		</div>
+		<!-- END #sidebar -->
+
+		<!-- BEGIN mobile-sidebar-backdrop -->
+		<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+		<!-- END mobile-sidebar-backdrop -->
+		
+		<!-- BEGIN #content -->
+		<div id="content" class="app-content">
+			<div class="d-flex align-items-center justify-content-between mb-2">
+				<h4 class="mb-0">사이버 위협정보 (Web Crawling)</h4>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">사이버 위협정보</a></li>
+					<li class="breadcrumb-item active">사이버 위협정보</li>
+				</ul>
+			</div>
+			
+			<div class="card">
+				<div class="section-alnalisys-log p-4">
+					<div class="" id="">
+						<article class="d-flex mb-4 justify-content-between align-items-center">
+							<div>
+								<button class="btn btn-sm btn-outline-theme">
+									<span>총 123,213 건</span>
+									<i class="fas fa-lg fa-fw me-2 fa-download"></i>
+								</button>
+							</div>
+
+							<!-- BEGIN input-group -->
+							<div class="col-6 d-flex fillter--serching-group">
+								<div class="flex-fill position-relative">
+									<from class="input-group">
+										<input id="searchVal" name="searchTag" type="text" class="form-control px-35px" placeholder="Filter orders" onkeydown="search(this)"/>
+										<div class="input-group-text position-absolute top-0 bottom-0 bg-none border-0 start-0" style="z-index: 1020;">
+											<i class="fa fa-search opacity-5"></i>
+										</div>
+									</from>
+								</div>
+								<div class="buttons-toolbar"></div>
+								<button
+									id="fillterBtn" 
+									class="btn btn btn-outline-default rounded-0 flex-shrink-0" 
+									type="button" 
+									style="border-right: 0;">
+										<i class="bi bi-funnel"></i> 필터
+								</button>
+								<button 
+									class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" type="button" 
+									onclick="search(this)">
+										검색
+								</button>
+							</div>
+							<!-- END input-group -->
+						</article>
+
+						<!-- result seach tag div -->
+						<div id="searching_tag" class="d-flex flex-wrap"></div>
+						
+						<!-- BEGIN table -->
+						<div class="table-responsive">
+							<table id="table" class="table-sm table-hover text-nowrap fs-12px"
+								data-toggle="table"
+								data-sort-class="table-active"
+								data-sortable="true"
+								data-pagination="true"
+								data-show-refresh="true"
+								data-show-columns="true"
+								data-buttons-toolbar=".buttons-toolbar">
+								<thead>
+									<tr>
+										<th>시간</th>
+										<th>사이트</th>
+										<th>설명</th>
+										<th>분석 결과</th>
+										<th>AI 분석 결과</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="hand" data-bs-toggle="modal" data-bs-target="#modalUri">
+										<td class="align-middle">
+											2021-11-17 <br>10:01:22
+										</td>
+										<td class="align-middle">OSINT1<br>192.168.1.96:8443</td>
+										<td class="align-middle">
+											<ul>
+												<li>
+													분석 대상(URI) : 
+													<span class="text-danger text-decoration-underline">CNC Server Site</span>
+												</li>
+												<li>서버 IP : 203.233.85.2:80 ( KR )</li>
+												<li>URL : <a href="#">http://www.kyobo.co.kr/appFree/js/appfreeCommon.js</a></li>
+											</ul>
+										</td>
+										<td class="align-middle">
+											평판분석: <span class="badge bg-danger">악성</span>
+										</td>
+										<td class="align-middle">
+											<strong class="text-theme">12.2</strong>
+										</td>
+									</tr>
+									<tr class="hand" data-bs-toggle="modal" data-bs-target="#modalFile">
+										<td class="align-middle">
+											2021-11-17 <br>10:01:22
+										</td>
+										<td class="align-middle">OSINT1<br>192.168.1.96:8443</td>
+										<td class="align-middle">
+											<ul>
+												<li>
+													분석 대상(File) : 
+													<span class="text-success text-decoration-underline">SDXHelper.exe</span>
+												</li>
+												<li>MD5 : 3b8b01cd9807800da72400a6a03a831b</li>
+												<li>파일 크기 : 40.9 MB  (42,902,920 byte)</li>
+												<li>행위 분석 완료 시간 : 2022-05-24 12:25:54 (43초)</li>
+												<li>AI 분석 완료 시간 :    2022-05-24 12:27:54 (120초)</li>
+												<li>총 분석 시간 : 163 초</li>
+											</ul>
+										</td>
+										<td class="align-middle">
+											<ul>
+												<li class="d-flex align-items-center">
+													AV분석 : <span class="badge badge-overflow-ellipsis">Gen.Trojan.Hedssdkosdfkds</span></li>
+												<li class="d-flex align-items-center">
+													정적 분석 : 
+													<input 
+													id="input-1-ltr-star-xs" 
+													name="input-1-ltr-star-xs" 
+													class="kv-ltr-theme-fas-star rating-loading" 
+													value="3" 
+													dir="ltr" 
+													data-size="xs" />
+												</li>
+												<li class="d-flex align-items-center">
+													동적 분석 : 
+													<input 
+													id="input-1-ltr-star-xs" 
+													name="input-1-ltr-star-xs" 
+													class="kv-ltr-theme-fas-star rating-loading" 
+													value="3" 
+													dir="ltr" 
+													data-size="xs" />
+												</li>
+												<li>분석 결과: <span class="badge bg-danger">악성</span></li>
+											</ul>
+										</td>
+										<td class="py-1 align-middle">
+											유사도 : <strong class="text-theme">95.34%</strong><br>
+											공격 유형 : <span class="badge">Trojan</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					
+						<!-- END table -->
+					
+					</div>
+				</div>
+				
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+
+			</div>
+
+			<!-- URL 상세 분석 modal start -->
+			<div class="modal fade" id="modalUri">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+								<h5 class="modal-title mt-0" id="exampleModalScrollableTitle">
+									URL 상세 분석
+								</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+						<div class="modal-body">
+							<!-- Begin page -->
+							<div id="layout-wrapper">
+			
+								<!-- ============================================================== -->
+								<!-- Start right Content here -->
+								<!-- ============================================================== -->
+								<div class="pop-main-content">
+
+									<div class="row">
+										<section class="col-12">
+											<!-- URL 분석 -->
+											<div class="d-flex justify-content-between align-items-center mb-2">
+												<h5 class="card-title mb-0">URL AI 분석 상세 <span class="text-theme">[12.2]</span></h5>
+											</div>
+											<table class="table table-bordered table-th-dark mb-0">
+												<tbody>
+														<tr>
+															<th>수집 시간</th>
+															<td>
+																22-05-24 12:25:00
+															</td>
+															<th>완료 시간</th>
+															<td>22-05-24 12:25:00</td>
+														</tr>
+														<tr>
+															<th>수집 사이트</th>
+															<td>관제1</td>
+															<th>수집 IP:Port</th>
+															<td>192.168.1.96:8443</td>
+														</tr>
+														<tr>
+															<th>구분</th>
+															<td>악성</td>
+															<th>서버 IP:Port</th>
+															<td>203.233.85.2:80</td>
+														</tr>
+														<tr>
+															<th>Country</th>
+															<td>KR</td>
+															<th>평판 분석</th>
+															<td><a href="#">VirusTotal</a></td>
+														</tr>
+														<tr>
+															<th>URL</th>
+															<td><a href="#">http://www.kyobo.co.kr/appFree/js/appfreeCommon.js</a></td>
+														</tr>
+												</tbody>
+											</table>
+										</section>
+									</div>
+
+									<div class="row mt-4">
+										<section class="col-12">
+											<!-- URL 분석 상세 -->
+											<div class="d-flex justify-content-between align-items-center mb-2">
+												<h5 class="card-title mb-0">URL 분석 상세</h5>
+											</div>
+											<table class="table table-sm mb-0 table-align-middle url-analisys-detail">
+												<tbody>
+														<tr>
+															<th class="table-dark" style="width: 475px;">html 길이</th>
+															<td>
+																218078
+															</td>
+															<th class="table-dark" style="width: 475px;">이메일 태그 링크</th>
+															<td>1</td>
+														</tr>
+														<tr>
+															<th class="table-dark">팝업 윈도우 내 텍스트필드 여부 개수</th>
+															<td>0</td>
+															<th class="table-dark">script 태그에서 외부 도메인에서 로드된 비율</th>
+															<td>100.0</td>
+														</tr>
+														<tr>
+															<th class="table-dark">url 리다이렉션 카운트</th>
+															<td>0</td>
+															<th class="table-dark">열려있는 포트</th>
+															<td>None</td>
+														</tr>
+														<tr>
+															<th class="table-dark">단축URL 및 리다이렉션 여부</th>
+															<td>none</td>
+															<th class="table-dark">URL내 @개수</th>
+															<td>0</td>
+														</tr>
+														<tr>
+															<th class="table-dark">ssl 만료 기간</th>
+															<td>379</td>
+															<th class="table-dark">url 길이</th>
+															<td>22</td>
+														</tr>
+														<tr>
+															<th class="table-dark">자바스크립트내 onMouseOver 스크립트 사용여부</th>
+															<td>0</td>
+															<th class="table-dark">호스트도메인에 IP존재 여부 확인</th>
+															<td>1</td>
+														</tr>
+														<tr>
+															<th class="table-dark">html 내 마우스오른쪽 이벤트 여부 개수</th>
+															<td>0</td>
+															<th class="table-dark">URL에  '-','_' 갯수를 세어 반환</th>
+															<td>1</td>
+														</tr>
+														<tr>
+															<th class="table-dark">알렉스 Top 포함 여부</th>
+															<td>49</td>
+															<th class="table-dark">URL 패스 영역에서 '//' 포함 갯수를 세어 반환</th>
+															<td>0</td>
+														</tr>
+														<tr>
+															<th class="table-dark">iframe width 길이 측정  #html 태그내 iframe이 존재 여부 체크하고,<br> 넓이를 측정하여 리턴</th>
+															<td>['350']</td>
+															<th class="table-dark">URL 프로토콜 스키마영역에<br> https 보안프로토콜이 적용되어있는지 여부를 반환</th>
+															<td>1</td>
+														</tr>
+														<tr>
+															<th class="table-dark">외부 도메인에서 src 로드된 비율</th>
+															<td>11.16</td>
+															<th class="table-dark">URL 호스트네임 영역에  https가 포함 여부를 반환</th>
+															<td>1</td>
+														</tr>
+														<tr>
+															<th class="table-dark">html 중 # 태그 비율</th>
+															<td>38.16</td>
+															<th class="table-dark">url 내에 숫자가 차지하는 비율</th>
+															<td>0.0</td>
+														</tr>
+														<tr>
+															<th class="table-dark">&#60;meta&#62;, &#60;script&#62;, &#60;link&#62; 비율 </th>
+															<td>1.63</td>
+															<th class="table-dark">인증서 남은 기간</th>
+															<td>1</td>
+														</tr>
+														<tr>
+															<th class="table-dark">form action이 있을 경우<br> 블랭크일경우 피싱, //외부 연결은 의심, 그밖에 정상</th>
+															<td>1</td>
+															<th class="table-dark">Whois 조회결과에 질의 도메인정보가 올바르게 등록 여부 확인</th>
+															<td>474</td>
+														</tr>
+												</tbody>
+											</table>
+										</section>
+									</div>
+	
+									<!-- end row -->
+										
+								</div>
+								<!-- end main content-->
+
+							</div>
+							<!-- END layout-wrapper -->
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- modal end -->
+
+			<!-- FILE 분석 modal start -->
+			<div class="modal fade" id="modalFile">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mt-0" id="exampleModalScrollableTitle">
+								FILE 분석
+							</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+						<div class="modal-body">
+							<!-- Begin page -->
+							<div id="layout-wrapper">
+			
+								<!-- ============================================================== -->
+								<!-- Start right Content here -->
+								<!-- ============================================================== -->
+								<div class="pop-main-content">
+
+									<div class="row mt-4">
+										<section class="col-6">
+											<!-- 파일 요약 -->
+											<div class="d-flex justify-content-between align-items-center mb-2">
+												<h5 class="card-title mb-0">파일 요약</h5>
+												<div>
+													<button class="btn btn-sm btn-success waves-effect">파일 재분석</button>
+													<button class="btn btn-sm btn-warning waves-effect mx-2">다운로드 <i class="fas fa-lg fa-fw me-2 fa-download"></i></button>
+													<button class="btn btn-sm btn-warning waves-effect me-2">PCAP <i class="fas fa-lg fa-fw me-2 fa-download"></i></button>
+													<button class="btn btn-sm btn-light waves-effect">보고서 <i class="fas fa-lg fa-fw me-2 fa-download"></i></i></button>
+												</div>
+											</div>
+											<table class="table table-bordered table-sm mb-0 table-th-dark">
+												<tbody>
+													<tr>
+														<th>분석 대상</th>
+														<td>
+																DismHost.exe
+														</td>
+													</tr>
+													<tr>
+														<th>파일 사이즈</th>
+														<td>111.3 KB (114,000byte)</td>
+													</tr>
+													<tr>
+														<th>분석구분</th>
+														<td>FILE</td>
+													</tr>
+													<tr>
+														<th>타입</th>
+														<td>AGENT</td>
+													</tr>
+													<tr>
+														<th>MD5</th>
+														<td>f8c86d4f3caf75138f7ac5112643033c</td>
+													</tr>
+													<tr>
+														<th>SHA1</th>
+														<td>f8c86d4f3caf75138f7ac5112643033c</td>
+													</tr>
+													<tr>
+														<th>SHA256</th>
+														<td>f8c86d4f3caf75138f7ac5112643033c</td>
+													</tr>
+													<tr>
+														<th>SHA512</th>
+														<td>f8c86d4f3caf75138f7ac5112643033c</td>
+													</tr>
+													<tr>
+														<th>확장자</th>
+														<td>PE32 Executable (1. EXE, 2. DLL, 3. EXE)</td>
+													</tr>
+												</tbody>
+											</table>
+										</section>
+										<section class="col-6">
+											<!-- 기타 정보 -->
+											<div class="d-flex justify-content-between mb-2">
+												<h5 class="card-title mb-0">기타 정보</h5>
+											</div>
+											<table class="table table-md table-bordered table-th-dark mb-0">
+												<tbody>
+													<tr>
+														<th>서명 이름</th>
+														<td>Microsoft Corp</td>
+													</tr>
+													<tr>
+														<th>알고리즘</th>
+														<td>SHA1 RSA</td>
+													</tr>
+													<tr>
+														<th>알고리즘 암호화</th>
+														<td>RSA</td>
+													</tr>
+													<tr>
+														<th>타임 스템프</th>
+														<td>2020-01-02 13:20:13(Tue)</td>
+													</tr>
+													<tr>
+														<th>종료 일자</th>
+														<td>2021-12-31</td>
+													</tr>
+													<tr>
+														<th>발급자</th>
+														<td>Microsoft TimeStamping PCA</td>
+													</tr>
+													<tr>
+														<th>일련번호</th>
+														<td>2938212eikwik1201293</td>
+													</tr>
+												</tbody>
+											</table>
+										</section>
+									</div>
+						
+									<div class="row mt-4">
+										<!-- 분석 요약 -->
+										<section class="col-12">
+											<div class="row">
+
+												<div class="col-6">
+													<div class="d-flex justify-content-between mb-2">
+														<h5 class="card-title mb-0">분석 요약</h5>
+													</div>
+													<table class="table table-sm table-bordered mb-0 table-th-dark">
+														<tbody>
+															<tr>
+																<th>AntiVirus</th>
+																<td>악성 (Trojan.teis13,kwdkd)</td>
+															</tr>
+															<tr>
+																<th>
+																	정적 분석
+																</th>
+																<td>
+																	<!-- TO DO
+																		위험도에 따른 색상 변경
+																		data-filled,data-empty
+																		*위험도 낮음 - text-success
+																		*위험도 중간 - text-warning
+																		*위험도 높음 - text-danger -->
+																	<input 
+																		name="input-1-ltr-star-xs" 
+																		class="kv-ltr-theme-fas-star rating-loading" 
+																		value="2" 
+																		dir="ltr" 
+																		data-size="xs"
+																	/>
+																	<span id="" title="">ZombieZERO Static</span>
+																</td>
+															</tr>
+															<tr>
+																<th>동적 분석</th>
+																<td>
+																	<input 
+																		name="input-1-ltr-star-xs" 
+																		class="kv-ltr-theme-fas-star rating-loading" 
+																		value="2" 
+																		dir="ltr" 
+																		data-size="xs"
+																	/>
+																	<span id="" title="">Ransompattern003 Ransom....</span>
+																</td>
+															</tr>
+															<tr>
+																<th class="col-md-3">
+																	평판 분석
+																</th>
+																<td>
+																	( - / - )
+																	<span class="badge badge-pill bg-success smal-font-log"> 분석 요청 </span>
+																</td>
+															</tr>
+															<tr>
+																<th>
+																	분석 결과
+																</th>
+																<td>
+																	<span class="badge badge-pill bg-success smal-font-log"> 정상 </span>
+																	<input type="hidden" name="hdnAntiVirus" id="hdnAntiVirus">
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												
+												<div class="col-6">
+													
+													<ul class="d-flex">
+														<li class="w-50 me-1">
+															<h6 class="mt-3">포함된 파일 분석 결과</h6>
+															<table class="table table-th-dark table-sm">
+																<thead>
+																	<th>파일명</th>
+																	<th>분석 결과</th>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>aaa.exe</td>
+																		<td>
+																			<span class="badge badge-pill bg-success smal-font-log"> 정상 </span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>ddd.exe</td>
+																		<td>
+																			<span class="badge badge-pill bg-danger smal-font-log"> 악성 </span>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</li>
+														<li class="w-50 ms-1">
+															<h6 class="mt-3">공격 기법</h6>
+															<table class="table table-th-dark table-sm">
+																<thead>
+																	<th>TID</th>
+																	<th>분석 결과</th>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>T1106.001</td>
+																		<td>
+																			<span class="badge badge-pill bg-success smal-font-log"> Native API </span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>T1106.22</td>
+																		<td>
+																			<span class="badge badge-pill bg-danger smal-font-log"> Escape to Host </span>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</section>
+									</div>
+						
+									<div class="row mt-4">
+										<section class="col-12">
+											<!-- Nav tabs -->
+											<ul class="nav nav-tabs">
+												<li class="nav-item me-1">
+													<a href="#ai-result" class="nav-link active" data-bs-toggle="tab">AI 분석 결과</a>
+												</li>
+												<li class="nav-item me-1">
+													<a href="#static-result" class="nav-link" data-bs-toggle="tab">정적 분석 결과</a>
+												</li>
+												<li class="nav-item me-1">
+													<a href="#dynamic-result" class="nav-link" data-bs-toggle="tab">동적 분석 결과</a>
+												</li>
+											</ul>
+						
+											<!-- Tab panes -->
+											<div class="tab-content p-3">
+												<!-- tab 2 정적 분석 결과 -->
+												<div class="tab-pane fade show active" id="ai-result">
+													<div class="d-flex mb-2 align-items-center">
+														<h5 class="card-title mb-0 me-2">AI 분석 결과</h5>
+													</div>
+													<div class="">
+														<table class="table table-bordered mb-0 table-th-dark">
+															<tbody>
+																<tr>
+																	<th class="col-md-3">
+																		AI 분석 결과
+																	</th>
+																	<td>
+																		94% <span class="text-danger">Malware</span>																	
+																	</td>
+																</tr>
+																<tr>
+																	<th>
+																		분석 시간
+																	</th>
+																	<td>
+																		63초 (2021-11-26 15:43 ~ 2021-11-26 15:44 )
+																	</td>
+																</tr>
+																<tr>
+																	<th>
+																		유형
+																	</th>
+																	<td>
+																		Ransomware 65.34%
+																	</td>
+																</tr>
+																<tr>
+																	<th>유형 유사도</th>
+																	<td>82.34%</td>
+																</tr>
+																<tr>
+																	<th>이미지 변환 결과</th>
+																	<td class="py-3">
+																		<div class="d-flex align-items-center">
+																			<div class="img-thumnail me-3">
+							
+																			</div>
+																			<button class="btn btn-theme">원본 보기</button>
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+													<div class="row mt-4">
+														<section class="col-6">
+															<!-- AI 분석 결과 -->
+															<h6 class="card-title">AI 분석 결과</h5>
+															<article id="chartAnalisysResult" class="apex-charts border" dir="ltr" style="padding: 36px 0px;"></article>
+														</section>
+										
+														<section class="col-md-6">
+															<!-- 유형 유사도 -->
+															<h6 class="card-title">유형 유사도</h5>
+																<div class="border position-relative">
+																	<article id="chartSimilarity" class="apex-charts py-3" dir="ltr"></article>
+																	<article style="position: absolute; bottom: 22px;">
+																		<ul class="px-3 d-flex">
+																			<li><span class="text-danger">Ransomware : </span>33%</li>
+																			<li class="mx-2"><span class="text-info">Backdoor : </span>33%</li>
+																			<li><span class="text-teal">Worm : </span>33%</li>
+																		</ul>
+																		<ul class="px-3 d-flex">
+																			<li><span class="text-warning">Trojan : </span>33%</li>
+																			<li class="mx-2"><span class="text-indigo">Bootkit : </span>33%</li>
+																			<li><span class="text-yellow">DDoS : </span>33%</li>
+																		</ul>
+																	</article>
+																</div>
+														</section>
+													</div>
+												</div>
+
+												<!-- tab 2 정적 분석 결과 -->
+												<div class="tab-pane fade" id="static-result">
+													<div class="d-flex mb-2 align-items-center">
+														<h5 class="card-title mb-0 me-2">정적 분석 결과</h5>
+														<span class="mr-1">위험도</span>
+														<input 
+															id="input-1-ltr-star-xs" 
+															name="input-1-ltr-star-xs" 
+															class="kv-ltr-theme-fas-star rating-loading" 
+															value="3" 
+															dir="ltr" 
+															data-size="xs"
+														/>
+														<span class="ms-2">Marco Include, ZombieZERO Static..</span>
+													</div>
+													<table style="width:100%;" class="table table-sm table-th-dark mb-0">
+														<thead class="thead-light">
+															<tr>
+																<th>YARA Rule</th>
+																<th>MITRE</th>
+																<th>위험도</th>
+																<th>설명</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td class="data">DetectWindowsHook</td>
+																<td class="data">T1179</td>
+																<td class="data">
+																	<input 
+																	id="input-1-ltr-star-xs" 
+																	name="input-1-ltr-star-xs" 
+																	class="kv-ltr-theme-fas-star rating-loading" 
+																	value="3" 
+																	dir="ltr" 
+																	data-size="xs"
+																/>
+																</td>
+																<td>문서 파일에 매크로 삽입</td>
+															</tr>
+															<tr>
+																<td class="data">DetectWindowsHook</td>
+																<td class="data">T1179</td>
+																<td class="data">
+																	<input 
+																	id="input-1-ltr-star-xs" 
+																	name="input-1-ltr-star-xs" 
+																	class="kv-ltr-theme-fas-star rating-loading" 
+																	value="3" 
+																	dir="ltr" 
+																	data-size="xs"
+																/>
+																</td>
+																<td>문서 파일에 매크로 삽입</td>
+															</tr>
+														</tbody>
+													</table>
+						
+													<div class="row mt-4">
+														<!-- 문자열 분석 결과 -->
+														<section class="col-6">
+															<h5 class="card-title mb-2">문자열 분석 결과</h5>
+															<ul class="d-flex align-items-center">
+																<li>
+																	<select name="" id="" class="form-select form-select-sm">
+																		<option value="">인코딩 선택</option>
+																	</select>
+																</li>
+																<li class="flex-grow-1 mx-2">
+																	<input type="text" class="form-control form-control-sm">
+																</li>
+																<li>
+																	<button class="btn btn-sm btn-success">검색</button>
+																</li>
+															</ul>
+															<p class="border mt-2 p-2 rounded">
+																itext<br>
+																WideStringh<br>
+																system<br>
+																software\Boland\Delphi\RTL<br>
+																Kernel32.dllSystem<br>
+																Bytes
+															</p>
+														</section>
+														<!-- 평판 분석 결과(Virus Total) -->
+														<section class="col-6">
+															<h5 class="card-title mb-2">평판 분석 결과(Virus Total)</h5>
+															<table class="table table-th-dark mb-0">
+																<tbody>
+																	<tr>
+																		<th>McAfee</th>
+																		<td>W32/Autorun.worm.bdy</td>
+																	</tr>
+																	<tr>
+																		<th>v3</th>
+																		<td>Autorun.worm</td>
+																	</tr>
+																	<tr>
+																		<th>Symantec</th>
+																		<td>ML/.Attribute.High….</td>
+																	</tr>
+																</tbody>
+														</table>
+														</section>
+													</div>
+						
+													<div class="row mt-3">
+														<!-- 섹션 -->
+														<section class="col-6">
+															<div class="d-flex align-items-center justify-content-between mb-2">
+																<h6 class="card-title">
+																	<span class="text-theme fs-5 me-1">
+																		<i class="bi bi-card-text"></i>
+																	</span>
+																	섹션
+																</h6>
+																<a
+																	class="btn btn-theme btn-sm btn-more"
+																	type="button" 
+																	data-bs-toggle="collapse" 
+																	data-bs-target="#collapseOne">
+																		자세히 
+																		<i class="bi bi-chevron-down"></i>
+																</a>
+															</div>
+															<table class="table table-sm mb-0 table-th-dark">
+																<thead>
+																	<tr>
+																		<th class="text-center">이름</th>
+																		<th class="text-center">가상 주소</th>
+																		<th class="text-center">가상 크기</th>
+																		<th class="text-center">원시 데이터 크기</th>
+																		<th class="text-center">엔트로피</th>
+																	</tr>
+																</thead>
+																<tbody id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+																	<tr>
+																		<td>.text</td>
+																		<td>0x00001000</td>
+																		<td>0x00007084</td>
+																		<td>0x00007200</td>
+																		<td>6.40573674841634</td>
+																	</tr>
+																	<tr>
+																		<td>.data</td>
+																		<td>0x00009000</td>
+																		<td>0x000004D4</td>
+																		<td>0x00000200</td>
+																		<td>0.406821332786283</td>
+																	</tr>
+																	<tr>
+																		<td>.idata</td>
+																		<td>0x0000A000</td>
+																		<td>0x00000E62</td>
+																		<td>0x00001000</td>
+																		<td>4.91776467055696</td>
+																	</tr>
+																	<tr>
+																		<td>.rsrc</td>
+																		<td>0x0000B000</td>
+																		<td>0x00000F08</td>
+																		<td>0x00001000</td>
+																		<td>4.37802116169608</td>
+																	</tr>
+																	<tr>
+																		<td>.reloc</td>
+																		<td>0x0000C000</td>
+																		<td>0x00000594</td>
+																		<td>0x00000600</td>
+																		<td>6.42146297817826</td>
+																	</tr>
+																</tbody>
+															</table>
+														</section>
+						
+														<!-- 리소스 -->
+														<section class="col-6">
+															<div class="d-flex align-items-center justify-content-between mb-2">
+																<h6 class="card-title">
+																	<span class="text-theme fs-5 me-1">
+																		<i class="bi bi-card-text"></i>
+																	</span>
+																	리소스
+																</h6>
+																<a 
+																class="btn btn-theme btn-sm btn-more"
+																type="button" 
+																data-bs-toggle="collapse" 
+																data-bs-target="#collapseTwo">
+																	자세히
+																	<i class="bi bi-chevron-down"></i>
+																</a>
+															</div>
+															<table class="table table-sm mb-0 table-th-dark">
+																<thead>
+																	<tr>
+																		<th class="text-center">이름</th>
+																		<th class="text-center">오프셋</th>
+																		<th class="text-center">크기</th>
+																		<th class="text-center">문화권</th>
+																		<th class="text-center">하위 언어</th>
+																	</tr>
+																</thead>
+																<tbody id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+																	<tr>
+																		<td class="data Ar">MUI </td>
+																		<td class="data Ar">0x0000BE30 </td>
+																		<td class="data Ar">0x000000D8 </td>
+																		<td class="data Ar">0x00000000 </td>
+																		<td class="data Ar">0x00000000 </td>
+																	</tr>
+																		
+																	<tr>
+																		<td class="data Ar">Icon </td>
+																		<td class="data Ar">0x0000B648 </td>
+																		<td class="data Ar">0x00000130 </td>
+																		<td class="data Ar">0x00000000 </td>
+																		<td class="data Ar">0x00000000 </td>
+																	</tr>
+															
+																	<tr>
+																		<td class="data Ar">Icon </td>
+																		<td class="data Ar">0x0000B778 </td>
+																		<td class="data Ar">0x000002E8 </td>
+																		<td class="data Ar">0x00000000 </td>
+																		<td class="data Ar">0x00000000 </td>
+																	</tr>
+															
+																	<tr>
+																		<td class="data Ar">GroupIcon </td>
+																		<td class="data Ar">0x0000BA60 </td>
+																		<td class="data Ar">0x00000022 </td>
+																		<td class="data Ar">0x00000000 </td>
+																		<td class="data Ar">0x00000000 </td>
+																	</tr>
+																		
+																	<tr>
+																		<td class="data Ar">Version </td>
+																		<td class="data Ar">0x0000BA88 </td>
+																		<td class="data Ar">0x000003A4 </td>
+																		<td class="data Ar">0x00000000 </td>
+																		<td class="data Ar">0x00000000 </td>
+																	</tr>
+																	<tr>
+																		<td class="data Ar">Manifest </td>
+																		<td class="data Ar">0x0000B1B0 </td>
+																		<td class="data Ar">0x00000492 </td>
+																		<td class="data Ar">0x00000000 </td>
+																		<td class="data Ar">0x00000000 </td>
+																	</tr>
+																</tbody>
+															</table>
+														</section>
+													</div>
+						
+													<div class="row mt-3">
+														<!-- 입력 -->
+														<section class="col-6">
+															<div class="d-flex align-items-center justify-content-between my-2">
+																<h6 class="card-title">
+																	<span class="text-theme fs-5 me-1">
+																		<i class="bi bi-card-text"></i>
+																	</span>
+																	입력
+																</h6>
+																<a
+																	class="btn btn-theme btn-sm btn-more"
+																	type="button" 
+																	data-bs-toggle="collapse" 
+																	data-bs-target="#collapseThree">
+																		자세히 <i class="bi bi-chevron-down"></i>
+																</a>
+															</div>
+															<table class="table table-sm mb-0 table-th-dark">
+																<tbody id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+																	<tr>
+																		<td>
+																			<span style="font-weight: bold;">ADVAPI32.dll </span>- RegOpenKeyExW -0x28C 
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<span style="font-weight: bold;">ADVAPI32.dll </span>- RegEnumValueW -0x27D 
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<span style="font-weight: bold;">ADVAPI32.dll </span>- RegQueryValueExW -0x299 
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<span style="font-weight: bold;">ADVAPI32.dll </span>- RegCloseKey -0x25B 
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</section>
+														
+														<!-- 출력 -->
+														<section class="col-6">
+															<div class="d-flex align-items-center justify-content-between my-2">
+																<h6 class="card-title">
+																	<span class="text-theme fs-5 me-1">
+																		<i class="bi bi-card-text"></i>
+																	</span>
+																	출력
+																</h6>
+																<a class="btn btn-theme btn-sm btn-more"
+																	type="button" 
+																	data-bs-toggle="collapse" 
+																	data-bs-target="#collapseFour">
+																		자세히 <i class="bi bi-chevron-down"></i>
+																</a>
+															</div>
+															<span id="lblEmptyExportRepeater"></span>
+															<table class="table table-sm mb-0 table-th-dark">
+																<tbody id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+																	<tr>
+																		<td style="text-align:center">데이터가 없습니다.</td>
+																	</tr>
+																</tbody>
+															</table>
+														</section>
+						
+														<!-- 맥 -->
+														<section class="col-6">
+															<div class="d-flex align-items-center justify-content-between my-2">
+																<h6 class="card-title">
+																	<span class="text-theme fs-5 me-1">
+																		<i class="bi bi-card-text"></i>
+																	</span>
+																	MAC
+																</h6>
+															</div>
+															<span id="lblEmptyExportRepeater"></span>
+															<table class="table table-sm mb-0 table-th-dark">
+																<thead>
+																	<tr>
+																		<th>만든 날짜</th>
+																		<th>마지막 접근 날짜</th>
+																		<th>수정한 날짜</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>def</td>
+																		<td>def</td>
+																		<td>def</td>
+																	</tr>
+																</tbody>
+															</table>
+														</section>
+						
+													</div>
+												</div>
+						
+												<!-- tab 3 동적 분석 결과-->
+												<div class="tab-pane fade" id="dynamic-result">
+													<!-- !!! to do 동적 분석 결과가 없을떄 -->
+													<div class="text-center d-none">
+														<span class="badge badge-pill badge-secondary font-size-14"> 미분석 </span>
+													</div>
+													<!-- !!! to do 동적 분석 결과가 있을때 -->
+													<div class="">
+														<div class="row">
+															<!-- 동적 야라룰 탐지 내역 -->
+															<section class="col-12">
+																<div class="d-flex mb-2 align-items-center">
+																	<h5 class="card-title mb-0 me-2">동적 분석 결과</h5>
+																	<span class="mr-1">위험도</span>
+																	<input 
+																		id="" 
+																		name="input-1-ltr-star-xs" 
+																		class="kv-ltr-theme-fas-star rating-loading" 
+																		value="3" 
+																		dir="ltr" 
+																		data-size="xs"
+																	/>
+																	<span class="ms-2">PatternRansomware003, NoSign, Pa...</span>
+																</div>
+																<table class="table table-sm table-th-dark mb-0">
+																	<thead class="thead-light">
+																		<tr>
+																			<th>YARA Rule</th>
+																			<th>MITRE</th>
+																			<th>위험도</th>
+																			<th>설명</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td>PatternRan..</td>
+																			<td>T1012</td>
+																			<td>
+																				<input 
+																					id="" 
+																					name="input-1-ltr-star-xs" 
+																					class="kv-ltr-theme-fas-star rating-loading" 
+																					value="4" 
+																					dir="ltr" 
+																					data-size="xs"
+																				/>
+																			</td>
+																			<td>파일 파괴</td>
+																		</tr>
+																		<tr>
+																			<td>PatternRan..</td>
+																			<td>T1012</td>
+																			<td>
+																				<input 
+																					id="" 
+																					name="input-1-ltr-star-xs" 
+																					class="kv-ltr-theme-fas-star rating-loading" 
+																					value="4" 
+																					dir="ltr" 
+																					data-size="xs"
+																				/>
+																			</td>
+																			<td>파일 파괴</td>
+																		</tr>
+																		<tr>
+																			<td>PatternRan..</td>
+																			<td>T1012</td>
+																			<td>
+																				<input 
+																					id="" 
+																					name="input-1-ltr-star-xs" 
+																					class="kv-ltr-theme-fas-star rating-loading" 
+																					value="4" 
+																					dir="ltr" 
+																					data-size="xs"
+																				/>
+																			</td>
+																			<td>파일 파괴</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</section>
+														</div>
+						
+														<div class="row mt-3">
+															<!-- 분석 통계 -->
+															<section class="col-6">
+																<h6 class="card-title">
+																	<span class="text-theme fs-5 me-1">
+																		<i class="bi bi-pie-chart"></i>
+																	</span>
+																	분석 통계
+																</h6>
+																<div id="type_chart" class="apex-charts py-2 border" dir="ltr"></div>
+																<table class="table table-bordered table-sm my-4">
+																	<thead class="thead-light">
+																		<tr>
+																			<th class="text-center">프로세스</th>
+																			<th class="text-center">파일</th>
+																			<th class="text-center">네트워크</th>
+																			<th class="text-center">레지스트리</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td class="text-center">
+																				<span id="lblProcess">0%</span>
+																			</td>
+																			<td class="text-center">
+																				<span id="lblFile">0%</span>
+																			</td>
+																			<td class="text-center">
+																				<span id="lblNetwork">0%</span>
+																			</td>
+																			<td class="text-center">
+																				<span id="lblRegistry">0%</span>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+																<div id="divChartProcess" class="border" style="width: 100%; height: 294px;"></div>
+															</section>
+														
+															<!-- 요약 -->
+															<section class="col-6">
+																<!-- <h6 class="card-title">요약</h6> -->
+						
+																	<!-- 악성 -->
+																	<article class="pb-2">
+																		<h6 class="card-title">
+																			<span class="text-theme fs-5 me-1">
+																				<i class="bi bi-card-text"></i>
+																			</span>
+																			악성
+																		</h6>
+																	
+																		<div class="text-muted mt-2 p-2 border" style="height: 241px; overflow:auto">
+																				
+																		</div>
+																	</article>
+																	
+																	<!-- 의심스러운 정보 -->
+																	<article class="my-3 pb-2">
+																		<h6 class="card-title">
+																			<span class="text-theme fs-5 me-1">
+																				<i class="bi bi-card-text"></i>
+																			</span>
+																			의심스러운 정보
+																		</h6>
+																			
+																		<div class="text-muted mt-2 p-2 border" style="height: 130px; overflow:auto">
+																				
+																		</div>
+																	</article>
+						
+																	<!-- 정보 -->
+																	<article class="pb-2">
+																		<h6 class="card-title">
+																			<span class="text-theme fs-5 me-1">
+																				<i class="bi bi-card-text"></i>
+																			</span>
+																			정보
+																		</h6>
+																		
+																		<div class="text-muted mt-2 p-2 border" style="height: 130px; overflow:auto">
+																				
+																		</div>
+																	</article>
+															</section>
+														</div>
+						
+														<!-- 프로세스 정보 -->
+														<div class="row mt-3">
+															<section class="col">
+																<div class="d-flex align-items-center my-2">
+																	<div class="avatar-xs mr-2">
+																		<span class="text-theme fs-5 me-2">
+																			<i class="bi bi-info-circle"></i>
+																		</span>
+																	</div>
+																	<h6 class="mb-0 card-title">프로세스 정보</h6>
+																</div>
+																
+																<table class="table mb-0 table-bordered" style="word-break: break-all;">
+																	<tbody>
+																		<tr>
+																			<td class="width10">프로세스 행위</td>
+																			<td>
+																					Create : <span class="badge badge-secondary font-size-13">1</span> 건 <br>
+																					Terminated  : <span class="badge badge-secondary font-size-13">0</span>건
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>프로세스 정보</td>
+																			<td>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+						
+																<!-- 프로세스 분석 결과 -->
+																<div class="mt-3 px-2">
+																	<div class="d-flex align-items-center my-2 pb-2 border-bottom">
+																		<div class="card-title mb-0 mr-2">프로세스 분석 결과</div>
+																		<span>총: <span class="badge bg-info font-size-13">1</span>건</span>
+																		<div class="ms-auto">
+																			<a class="btn btn-theme btn-sm btn-more" 
+																				data-bs-toggle="collapse" 
+																				href="#collapseExample" 
+																				role="button" 
+																				aria-expanded="false" 
+																				aria-controls="collapseExample">
+																					자세히 <i class="bi bi-chevron-down"></i>
+																			</a>
+																		</div>
+																	</div>
+																	<div id="collapseExample" class="collapse">
+																		<!-- 검색 조건 설정 -->
+																		<article class="d-flex align-items-center justify-content-end mb-3">
+																			<div>
+																				검색 조건 설정 :
+																				<input id="chkAccProcess" type="checkbox" name="chkAccProcess" checked="checked">
+																				<label for="chkAccProcess" class="mb-0">연관 프로세스</label>
+																			</div>
+																			<div class="ml-2" style="display: none">
+																				<select name="ddlProcType" id="ddlProcType" class="form-control form-control-2 smal-dropdown margin-top3">
+																					<option value="'Proc'">프로세스</option>
+																				</select>
+																			</div>
+																			<div class="ml-2">
+																				<select name="ddlProcResult" id="ddlProcResult" class="form-select">
+																					<option value="">전체</option>
+																					<option value="supicious">악성</option>
+																				</select>
+																			</div>
+																			<div style="margin-left: 5px" class="col-md-5">
+																				<input name="txtSearchInPrc" type="text" maxlength="300" id="txtSearchInPrc" class="form-control form-control-2 margin-top3">
+																			</div>
+																			<div style="margin-left: 5px">
+																				<input type="button" class="margin-left10 btn btn-primary btnOption margin-top3" value="검색" onclick="javascript: onListSearch(1)">
+																			</div>
+																		</article>
+																		<!-- 결과 테이블 -->
+																		<table class="table mb-0 table-bordered table-align-middle">
+																			<thead class="thead-light">
+																				<tr>
+																					<th class="fit">시간 (ms)</th>
+																					<th style="width: 76px">타입</th>
+																					<th>OS </th>
+																					<th>이벤트 </th>
+																					<th>PID </th>
+																					<th>상세정보 ( 메인 프로세스 - <span class="ui-color-mark" style="background-color: #66C;"></span>/연관 프로세스 - <span class="ui-color-mark" style="background-color: #93B;"></span> ) </th>
+																					<th>위험도 </th>
+																					<th class="fit">탐지 </th>
+																					<th>MITRE</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr>
+																					<td>219</td>
+																					<td class="fit">프로세스</td>
+																					<td class="fit">Win7 x64</td>
+																					<td>
+																							Create</td>
+																					<td>
+																							2032</td>
+																					<td class="data Al">
+																							<div style="padding-left: 7px;">
+																									<span style="color: #66C;"><strong>C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc6584f8c825310cd.exe</strong></span>
+																							</div>
+																							<div style="padding-left: 20px;">
+																									<span>
+																										PID:2144, PATH:C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc6584f8c825310cd.exe, PARAM:C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc...
+																									</span>
+																							</div>
+																					</td>
+																					<td class="fit">
+																						<input 
+																							name="input-1-ltr-star-xs" 
+																							class="kv-ltr-theme-fas-star rating-loading" 
+																							value="2" 
+																							dir="ltr" 
+																							data-size="xs"
+																						/>
+																					</td>
+																					<td></td>
+																					<td></td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+															</section>
+														</div>
+						
+														<!-- 파일 정보 -->
+														<div class="row mt-3">
+															<section class="col">
+																<div class="d-flex align-items-center my-2">
+																	<div class="avatar-xs mr-2">
+																		<span class="text-theme fs-5 me-2">
+																			<i class="bi bi-info-circle"></i>
+																		</span>
+																	</div>
+																	<h6 class="mb-0 card-title">파일 정보</h6>
+																</div>
+																
+																<table class="table mb-0 table-bordered" style="word-break: break-all;">
+																	<tbody>
+																		<tr>
+																			<td>파일 행위</td>
+																			<td>
+																					Create : <span class="badge badge-secondary font-size-13">1</span> 건 <br>
+																					Write : <span class="badge badge-secondary font-size-13">0</span> 건 <br>
+																					Delete : <span class="badge badge-secondary font-size-13">2</span> 건 <br>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>악성 파일 정보</td>
+																			<td>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+						
+																<!-- 프로 세스 분석 결과 -->
+																<div class="mt-3 px-2">
+																	<div class="d-flex align-items-center my-2 pb-2 border-bottom">
+																		<div class="card-title mb-0 mr-2">파일 분석 결과</div>
+																		<span>총: <span class="badge bg-info font-size-13">3</span>건</span>
+																		<div class="ms-auto">
+																			<a class="btn btn-theme btn-sm btn-more" 
+																				data-bs-toggle="collapse" 
+																				href="#collapseExample2" 
+																				role="button" 
+																				aria-expanded="false" 
+																				aria-controls="collapseExample">
+																					자세히 <i class="bi bi-chevron-down"></i>
+																			</a>
+																		</div>
+																	</div>
+																	<div id="collapseExample2" class="collapse">
+																		<!-- 검색 조건 설정 -->
+																		<article class="d-flex align-items-center justify-content-end mb-3">
+																			<div>
+																				검색 조건 설정 :
+																				<input id="chkAccProcess" type="checkbox" name="chkAccProcess" checked="checked">
+																				<label for="chkAccProcess" class="mb-0">연관 프로세스</label>
+																			</div>
+																			<div class="ml-2" style="display: none">
+																				<select name="ddlProcType" id="ddlProcType" class="form-control form-control-2 smal-dropdown margin-top3">
+																					<option value="'Proc'">프로세스</option>
+																				</select>
+																			</div>
+																			<div class="ml-2">
+																				<select name="ddlProcResult" id="ddlProcResult" class="form-control">
+																					<option value="">전체</option>
+																					<option value="supicious">악성</option>
+																				</select>
+																			</div>
+																			<div style="margin-left: 5px" class="col-md-5">
+																				<input name="txtSearchInPrc" type="text" maxlength="300" id="txtSearchInPrc" class="form-control form-control-2 margin-top3">
+																			</div>
+																			<div style="margin-left: 5px">
+																				<input type="button" class="margin-left10 btn btn-primary btnOption margin-top3" value="검색" onclick="javascript: onListSearch(1)">
+																			</div>
+																		</article>
+																		<!-- 결과 테이블 -->
+																		<table class="table mb-0 table-bordered table-align-middle">
+																			<thead class="thead-light">
+																				<tr>
+																					<th class="fit">시간 (ms)</th>
+																					<th style="width: 76px;">타입</th>
+																					<th>OS </th>
+																					<th>이벤트 </th>
+																					<th>PID </th>
+																					<th>상세정보 ( 메인 프로세스 - <span class="ui-color-mark" style="background-color: #66C;"></span>/연관 프로세스 - <span class="ui-color-mark" style="background-color: #93B;"></span> ) </th>
+																					<th>위험도 </th>
+																					<th class="fit">탐지 </th>
+																					<th>MITRE</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr>
+																					<td>219</td>
+																					<td class="fit">프로세스</td>
+																					<td class="fit">Win7 x64</td>
+																					<td>
+																							Create</td>
+																					<td>
+																							2032</td>
+																					<td class="data Al">
+																							<div style="padding-left: 7px;">
+																									<span style="color: #66C;"><strong>C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc6584f8c825310cd.exe</strong></span>
+																							</div>
+																							<div style="padding-left: 20px;">
+																									<span>
+																										PID:2144, PATH:C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc6584f8c825310cd.exe, PARAM:C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc...
+																									</span>
+																							</div>
+																					</td>
+																					<td class="fit">
+																						<input type="hidden" value="3" disabled="disabled" class="rating" data-filled="mdi mdi-circle text-warning" data-empty="mdi mdi-circle-outline text-warning">
+																					</td>
+																					<td></td>
+																					<td></td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+															</section>
+														</div>
+						
+														<!-- 네트워크 정보 -->
+														<div class="row mt-3">
+															<section class="col">
+																<div class="d-flex align-items-center my-2">
+																	<div class="avatar-xs mr-2">
+																		<span class="text-theme fs-5 me-2">
+																			<i class="bi bi-info-circle"></i>
+																		</span>
+																	</div>
+																	<h6 class="mb-0 card-title">네트워크 정보</h6>
+																</div>
+																
+																<table class="table mb-0 table-bordered" style="word-break: break-all;">
+																	<tbody>
+																		<tr>
+																			<td>네트워크 행위</td>
+																			<td>
+																					Create : <span class="badge badge-secondary font-size-13">1</span> 건 <br>
+																					Write : <span class="badge badge-secondary font-size-13">0</span> 건 <br>
+																					Delete : <span class="badge badge-secondary font-size-13">2</span> 건 <br>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>C&amp;C URL/ IP info</td>
+																			<td>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+						
+																<!-- 네트워크 분석 결과 -->
+																<div class="mt-3 px-2">
+																	<div class="d-flex align-items-center my-2 pb-2 border-bottom">
+																		<div class="card-title mb-0 mr-2">네트워크 분석 결과</div>
+																		<span>총: <span class="badge bg-info font-size-13">3</span>건</span>
+																		<div class="ms-auto">
+																			<a class="btn btn-theme btn-sm btn-more" 
+																				data-bs-toggle="collapse" 
+																				href="#collapseExample3" 
+																				role="button" 
+																				aria-expanded="false" 
+																				aria-controls="collapseExample">
+																					자세히 <i class="bi bi-chevron-down"></i>
+																			</a>
+																		</div>
+																	</div>
+																	<div id="collapseExample3" class="collapse">
+																		<!-- 검색 조건 설정 -->
+																		<article class="d-flex align-items-center justify-content-end mb-3">
+																			<div>
+																				검색 조건 설정 :
+																				<input id="chkAccProcess" type="checkbox" name="chkAccProcess" checked="checked">
+																				<label for="chkAccProcess" class="mb-0">연관 프로세스</label>
+																			</div>
+																			<div class="ml-2" style="display: none">
+																				<select name="ddlProcType" id="ddlProcType" class="form-control form-control-2 smal-dropdown margin-top3">
+																					<option value="'Proc'">프로세스</option>
+																				</select>
+																			</div>
+																			<div class="ml-2">
+																				<select name="ddlProcResult" id="ddlProcResult" class="form-control">
+																					<option value="">전체</option>
+																					<option value="supicious">악성</option>
+																				</select>
+																			</div>
+																			<div style="margin-left: 5px" class="col-md-5">
+																				<input name="txtSearchInPrc" type="text" maxlength="300" id="txtSearchInPrc" class="form-control form-control-2 margin-top3">
+																			</div>
+																			<div style="margin-left: 5px">
+																				<input type="button" class="margin-left10 btn btn-primary btnOption margin-top3" value="검색" onclick="javascript: onListSearch(1)">
+																			</div>
+																		</article>
+																		<!-- 결과 테이블 -->
+																		<table class="table mb-0 table-bordered table-align-middle">
+																			<thead class="thead-light">
+																				<tr>
+																					<th class="fit">시간 (ms)</th>
+																					<th style="width: 76px;">타입</th>
+																					<th>OS </th>
+																					<th>이벤트 </th>
+																					<th>PID </th>
+																					<th>상세정보 ( 메인 프로세스 - <span class="ui-color-mark" style="background-color: #66C;"></span>/연관 프로세스 - <span class="ui-color-mark" style="background-color: #93B;"></span> ) </th>
+																					<th>위험도 </th>
+																					<th class="fit">탐지 </th>
+																					<th>MITRE</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr>
+																					<td>219</td>
+																					<td class="fit">프로세스</td>
+																					<td class="fit">Win7 x64</td>
+																					<td>
+																							Create</td>
+																					<td>
+																							2032</td>
+																					<td class="data Al">
+																							<div style="padding-left: 7px;">
+																									<span style="color: #66C;"><strong>C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc6584f8c825310cd.exe</strong></span>
+																							</div>
+																							<div style="padding-left: 20px;">
+																									<span>
+																										PID:2144, PATH:C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc6584f8c825310cd.exe, PARAM:C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc...
+																									</span>
+																							</div>
+																					</td>
+																					<td class="fit">
+																						<input 
+																							name="input-1-ltr-star-xs" 
+																							class="kv-ltr-theme-fas-star rating-input" 
+																							value="2" 
+																							dir="ltr" 
+																							data-size="xs" 
+																							tabindex="-1"
+																						/>
+																					</td>
+																					<td></td>
+																					<td></td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+															</section>
+														</div>
+						
+															<!-- 레지스트리 정보 -->
+															<div class="row mt-3">
+																<section class="col">
+																	<div class="d-flex align-items-center my-2">
+																		<div class="avatar-xs mr-2">
+																			<span class="text-theme fs-5 me-2">
+																				<i class="bi bi-info-circle"></i>
+																			</span>
+																		</div>
+																		<h6 class="mb-0 card-title">레지스트리 정보</h6>
+																	</div>
+																	
+																	<table class="table mb-0 table-bordered" style="word-break: break-all;">
+																		<tbody>
+																			<tr>
+																				<td>레지스트리 행위</td>
+																				<td>
+																						Create : <span class="badge badge-secondary font-size-13">1</span> 건 <br>
+																						Write : <span class="badge badge-secondary font-size-13">0</span> 건 <br>
+																						Delete : <span class="badge badge-secondary font-size-13">2</span> 건 <br>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>악성</td>
+																				<td></td>
+																			</tr>
+																		</tbody>
+																	</table>
+						
+																	<!-- 네트워크 분석 결과 -->
+																	<div class="mt-3 px-2">
+																		<div class="d-flex align-items-center my-2 pb-2 border-bottom">
+																			<div class="card-title mb-0 mr-2">레지스트리분석 결과</div>
+																			<span>총: <span class="badge bg-info font-size-13">3</span>건</span>
+																			<div class="ms-auto">
+																				<a class="btn btn-theme btn-sm btn-more" 
+																					data-bs-toggle="collapse" 
+																					href="#collapseExample4" 
+																					role="button" 
+																					aria-expanded="false" 
+																					aria-controls="collapseExample">
+																						자세히 <i class="bi bi-chevron-down"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div id="collapseExample4" class="collapse">
+																			<!-- 검색 조건 설정 -->
+																			<article class="d-flex align-items-center justify-content-end mb-3">
+																				<div>
+																					검색 조건 설정 :
+																					<input id="chkAccProcess" type="checkbox" name="chkAccProcess" checked="checked">
+																					<label for="chkAccProcess" class="mb-0">연관 프로세스</label>
+																				</div>
+																				<div class="ml-2" style="display: none">
+																					<select name="ddlProcType" id="ddlProcType" class="form-control form-control-2 smal-dropdown margin-top3">
+																						<option value="'Proc'">프로세스</option>
+																					</select>
+																				</div>
+																				<div class="ml-2">
+																					<select name="ddlProcResult" id="ddlProcResult" class="form-control">
+																						<option value="">전체</option>
+																						<option value="supicious">악성</option>
+																					</select>
+																				</div>
+																				<div style="margin-left: 5px" class="col-md-5">
+																					<input name="txtSearchInPrc" type="text" maxlength="300" id="txtSearchInPrc" class="form-control form-control-2 margin-top3">
+																				</div>
+																				<div style="margin-left: 5px">
+																					<input type="button" class="margin-left10 btn btn-primary btnOption margin-top3" value="검색" onclick="javascript: onListSearch(1)">
+																				</div>
+																			</article>
+																			<!-- 결과 테이블 -->
+																			<table class="table mb-0 table-bordered table-align-middle">
+																				<thead class="thead-light">
+																					<tr>
+																						<th class="fit">시간 (ms)</th>
+																						<th style="width: 76px">타입</th>
+																						<th>OS </th>
+																						<th>이벤트 </th>
+																						<th>PID </th>
+																						<th>상세정보 ( 메인 프로세스 - <span class="ui-color-mark" style="background-color: #66C;"></span>/연관 프로세스 - <span class="ui-color-mark" style="background-color: #93B;"></span> ) </th>
+																						<th>위험도 </th>
+																						<th class="fit">탐지 </th>
+																						<th>MITRE</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																					<tr>
+																						<td>219</td>
+																						<td class="fit">프로세스</td>
+																						<td class="fit">Win7 x64</td>
+																						<td>
+																								Create</td>
+																						<td>
+																								2032</td>
+																						<td class="data Al">
+																								<div style="padding-left: 7px;">
+																										<span style="color: #66C;"><strong>C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc6584f8c825310cd.exe</strong></span>
+																								</div>
+																								<div style="padding-left: 20px;">
+																										<span>
+																											PID:2144, PATH:C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc6584f8c825310cd.exe, PARAM:C:\SBBIN\NPcoreMalware_466f9b21a3b8fb4fc...
+																										</span>
+																								</div>
+																						</td>
+																						<td class="fit">
+																							<input 
+																								name="input-1-ltr-star-xs" 
+																								class="kv-ltr-theme-fas-star rating-input" 
+																								value="2" 
+																								dir="ltr" 
+																								data-size="xs" 
+																								tabindex="-1"
+																							/>
+																						</td>
+																						<td></td>
+																						<td></td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																	</div>
+																</section>
+															</div>
+						
+													</div>
+												</div>
+						
+											</div>
+										</section>
+									</div>
+
+								</div>
+								<!-- end main content-->
+
+							</div>
+							<!-- END layout-wrapper -->
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- modal end -->
+
+			<!-- 수동 URL 분석  -->
+			<div class="card mt-4">
+				<div class="card-body">
+					<article class="">
+						<h5 class="card-title">수동 URL 분석</h5>
+						<div class="d-flex">
+							<input type="text" class="form-control" id="" style="width: 600px" />
+							<button class="btn btn-success ms-2">분석 요청</button>
+						</div>
+					</article>
+
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		
+		<!-- END #content -->
+		
+		<!-- BEGIN btn-scroll-top -->
+		<a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+		<!-- END btn-scroll-top -->
+	
+		<!-- BEGIN 조건 검색 panel -->
+		<div class="app-theme-panel">
+			<div class="app-theme-panel-container">
+				<!-- <a href="javascript:;" data-toggle="theme-panel-expand" class="app-theme-toggle-btn"><i class="bi bi-sliders"></i></a> -->
+				<div class="app-theme-panel-content">
+					<div class="small fw-bold text-white mb-1 d-flex justify-content-between px-2 align-items-center">
+						<span>Fillter</span>
+						<button class="btn btn-sm" data-toggle="theme-panel-expand"><i class="bi bi-x"></i></button>
+					</div>
+					<div class="card mb-3">
+						<!-- BEGIN card-body -->
+						<div class="card-body p-2">
+							<article id="content-filltering" class="content-filltering p-2 px-3 show" aria-labelledby="fillterBtn">
+								<div class="row">
+									<label for="">조건 검색</label>
+									<div class="col-6">
+										<!-- 전체 분류 -->
+										<div class="form-group mb-0">
+											<select id="def2" class="form-select">
+												<option value="전체" selected="">전체</option>
+												<option value="">정상</option>
+												<option value="">악성</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-6">
+										<!-- 사이트 분류 -->
+										<div class="form-group mb-0">
+											<select class="form-select">
+												<option selected="selected" value="">사이트</option>
+												<option value="">IP</option>
+												<option value="">Port</option>
+												<option value="">설명</option>
+												<option value="">분석 결과</option>
+												<option value="">AI 분석 결과</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<!-- 날짜 설정 -->
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group mt-2 mb-0">
+											<label for="">날짜 설정 :</label>
+											<div class="input-group input-daterange" id="">
+												<input id="date_timepicker_start" type="text" class="form-control" placeholder="시작 날짜" />
+												<span class="input-group-text">to</span>
+												<input id="date_timepicker_end" type="text" class="form-control" placeholder="끝 날짜" />
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- 타입 & 사전탐지 -->
+								<div class="row mt-2">
+									<div class="col-6">
+										<div class="form-group mb-0">
+											<label for="">수집 사이트 선택 :</label>
+											<select class="form-select">
+												<option value="" selected="">def</option>
+											</select>
+										</div>
+									</div>
+								</div><!-- end-of-row -->
+
+								<!-- 검색창 -->
+								<div class="mt-2">
+									<label for="">검색 :</label>
+									<div class="d-flex">
+										<div class="input-group">
+											<input id="fillterVal" type="text" name="searchTag" class="form-control px-35px" placeholder="Filter orders" onkeydown="search(this)">
+											<div class="input-group-text position-absolute top-0 bottom-0 bg-none border-0 start-0" style="z-index: 1020;">
+												<i class="fa fa-search opacity-5"></i>
+											</div>
+										</div>
+										
+										<button 
+											class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" 
+											type="button" 
+											onclick="search(this)">
+												검색
+										</button>
+
+										<button 
+											class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" 
+											type="button" 
+											onclick=""
+											data-bs-toggle="collapse" data-bs-target="#addingSearch">
+												검색어 추가
+										</button>
+										
+									</div>
+								</div>
+
+								<!-- 검색어 추가 -->
+								<div class="mt-2 collapse" id="addingSearch">
+									<label for="">검색어 추가 :</label>
+									<div class="d-flex">
+										<!-- and & or -->
+										<div class="flex-shrink-0">
+											<select id="conjunction" class="form-select" name="conjunction">   
+												<option value="and">AND</option>   
+												<option value="or">OR</option>
+											</select>
+										</div>
+										<div class="flex-shrink-0 mx-2 col-2">
+											<!-- 분류 -->
+											<select id="sortTest" class="form-select">
+												<option value="id">ID</option>   
+												<option value="b">분석 대상</option>   
+												<option value="c">파일 확장자</option>   
+												<option value="">Hash(MD5) </option>   
+												<option value="">안티 바이러스 결과 </option>   
+												<option value="">정적 분석 결과 </option>   
+												<option value="">동적 분석 결과 </option>   
+												<option value="">Parent ID </option>   
+												<option value="">다운로드URL</option>   
+												<option value="">메일 제목</option>   
+												<option value="">보낸 메일주소</option>   
+												<option value="">받은 메일주소</option>   
+												<option value="">참조 메일 주소</option>   
+												<option value="">EDR ID </option>   
+												<option value="">EDR PC명 </option>   
+												<option value="">EDR 그룹명 </option>   
+												<option value="">EDR 설명 </option>
+											</select>
+										</div>
+
+										<!-- 검색창 -->
+										<div class="input-group">
+											<input id="addSearchTag" type="text" name="addSearchTag" class="form-control px-35px" placeholder="Filter orders" onkeydown="addSearch(this)">
+											<div class="input-group-text position-absolute top-0 bottom-0 bg-none border-0 start-0" style="z-index: 1020;">
+												<i class="fa fa-search opacity-5"></i>
+											</div>
+										</div>
+				
+										<!-- 검색 버튼 -->
+										<button 
+											class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" 
+											type="button" 
+											onclick="addSearch(this)">
+												검색
+										</button>
+									</div>
+								</div>
+							</article>															
+							<!-- END theme-list -->
+						</div>
+						<!-- END card-body -->
+						
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow" style="z-index: 0;">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		<!-- END 조건 검색 panel -->
+
+	</div>
+	<!-- END #app -->
+		<!-- ================== BEGIN core-js ================== -->
+	<script src="../assets/js/vendor.min.js"></script>
+	<script src="../assets/js/app.min.js"></script>
+	<!-- ================== END core-js ================== -->
+	
+	<!-- ================== BEGIN page-js ================== -->
+	<script src="../assets/plugins/bootstrap-star-rating/js/star-rating.min.js"></script>
+	<script src="../assets/plugins/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/plugins/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
+	<script src="../assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+	<script src="../assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+	<script src="../assets/plugins/bootstrap-table/dist/bootstrap-table.min.js"></script>
+	<script src="../assets/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+	<script src="../assets/plugins/bootstrap-table/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.js"></script>
+	<script src="../assets/js/demo/common.demo.js"></script>
+	<script src="../assets/js/pages/web-crawling/web-crawling.js"></script>
+	<!-- ================== END page-js ================== -->
+</body>
+</html>
+
+	

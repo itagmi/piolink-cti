@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>대검찰청 악성코드 분석 시스템 | @@title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<!-- App favicon -->
+	<link rel="shortcut icon" href="../assets/img/favicon.ico">
+	
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="../assets/css/vendor.min.css" rel="stylesheet" />
+	<link href="../assets/css/app.min.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+	
+		<!-- ================== BEGIN page-css ================== -->
+		
+		<link href="../assets/plugins/bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" />
+		<link href="../assets/plugins/bootstrap-star-rating/themes/krajee-fas/theme.min.css" rel="stylesheet" />
+		<link href="../assets/plugins/apexcharts/dist/apexcharts.css" rel="stylesheet" />
+		<link href="../assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
+		<link href="../assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+		<link href="../assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" />
+		<!-- ================== END page-css ================== -->
+	
+</head>
+<body>
+	<!-- BEGIN #app -->
+	<div id="app" class="app">
+		<!-- BEGIN #header -->
+		<div id="header" class="app-header">
+			<!-- BEGIN desktop-toggler -->
+			<div class="desktop-toggler">
+				<button id="def" type="button" class="menu-toggler" data-toggle-class="app-sidebar-collapsed" data-dismiss-class="app-sidebar-toggled" data-toggle-target=".app">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+			</div>
+
+			<!-- <button onclick="checkToggle()">aaa</button> -->
+
+			<!-- BEGIN desktop-toggler -->
+			
+			<!-- BEGIN mobile-toggler -->
+			<div class="mobile-toggler">
+				<button type="button" class="menu-toggler" data-toggle-class="app-sidebar-mobile-toggled" data-toggle-target=".app">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+			</div>
+			<!-- END mobile-toggler -->
+			
+			<!-- BEGIN brand -->
+			<div class="brand">
+				<a href="../main/index.html" class="brand-logo">
+					<span class="brand-img">
+						<span class="brand-img-text text-theme">PIOLINK CTI</span>
+					</span>
+					<span class="brand-text">v2.0</span>
+				</a>
+			</div>
+			<!-- END brand -->
+			
+			<!-- BEGIN menu -->
+			<div class="menu">
+				<div class="menu-item ">
+					<a href="#" class="menu-link">
+						<i class="bi bi-clock me-2" style="margin-top: 2px;"></i> 
+						<span id="time">08:00</span>
+					</a>
+				</div>
+				<div class="menu-item dropdown dropdown-mobile-full">
+					<a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
+						<div class="menu-text d-sm-block d-none">
+							guest
+							<i class="fas fa-lg fa-fw me-2 fa-angle-down" style="font-size: 8px;"></i>
+						</div>
+					</a>
+					<div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1" style="width: 226px">
+						<div style="padding: 0 16px;">
+							<table class="table table-bordered table-sm text-center my-2">
+								<thead>
+										<tr>
+												<th>아이디</th>
+												<th>IP</th>
+												<th>시간</th>
+										</tr>
+								</thead>
+								<tbody>
+										<tr>
+												<td>defuguer</td>
+												<td>1.1.1.1</td>
+												<td>2021-10-26 18:13:01</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item d-flex align-items-center" href="../main/login.html">LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
+					</div>
+				</div>
+			</div>
+			<!-- END menu -->
+			
+			<!-- BEGIN menu-search -->
+			<form class="menu-search" method="POST" name="header_search_form">
+				<div class="menu-search-container">
+					<div class="menu-search-icon"><i class="bi bi-search"></i></div>
+					<div class="menu-search-input">
+						<input type="text" class="form-control form-control-lg" placeholder="Search menu..." />
+					</div>
+					<div class="menu-search-icon">
+						<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app"><i class="bi bi-x-lg"></i></a>
+					</div>
+				</div>
+			</form>
+			<!-- END menu-search -->
+		</div>
+		<!-- END #header -->
+
+		<!-- when mobile size resolution warn page -->
+		<div class="mobile-size">
+	<div class="wrapperMessage">
+			<div class="logo-wrap">
+				<img src="../assets/img/login-zombie-zero-logo.svg" alt="">
+			</div>
+			<div class="errorInfo">
+					
+				<h1>Increase the page size</h1>
+				<p>이 페이지는 <br> 해상도 <span>1280px</span>이상 에 최적화 되어있습니다.</p>
+													
+			</div>
+	</div>
+</div>
+		
+				<!-- BEGIN #sidebar -->
+		<div id="sidebar" class="app-sidebar">
+			<!-- BEGIN scrollbar -->
+			<div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
+				<!-- BEGIN menu -->
+				<div class="menu">
+					<div class="menu-header">Administor</div>
+					<!-- 전체 대시보드 -->
+					<div class="menu-item">
+						<a href="../main/index.html" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-cpu"></i></span>
+							<span class="menu-text">Dashboard</span>
+						</a>
+					</div>
+					<!-- 사이트 별 대시보드 -->
+					<div class="menu-item">
+						<a href="../main/index-site.html" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-cpu"></i></span>
+							<span class="menu-text">Dashboard</span>
+						</a>
+					</div>
+					<!-- 사이버 위협정보 -->
+					<div class="menu-item">
+						<a href="../web-crawling/web-crawling.html" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-bug"></i></span>
+							<span class="menu-text">사이버 위협정보</span>
+						</a>
+					</div>
+					<!-- 웹 위/변조 모니터링 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-window"></i>
+							</span>
+							<span class="menu-text">웹 위/변조 모니터링</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../web-falsify-monitoring/web-monitoring.html" class="menu-link">
+									<span class="menu-text">웹 모니터링</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../web-falsify-monitoring/web-monitoring-info.html" class="menu-link">
+									<span class="menu-text">웹 모니터링 상세 정보</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 사고 분석 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-pie-chart"></i>
+							</span>
+							<span class="menu-text">사고 분석</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../accident-analisys/analisys-request.html" class="menu-link">
+									<span class="menu-text">분석 요청</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../accident-analisys/accident-analisys-log.html" class="menu-link">
+									<span class="menu-text">사고 분석 로그</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 수동 파일 분석 -->
+					<div class="menu-item has-sub active">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-folder-check"></i>
+							</span>
+							<span class="menu-text">수동 파일 분석</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../manual-file-analisys/manual-file-upload.html" class="menu-link">
+									<span class="menu-text">수동 파일 업로드</span>
+								</a>
+							</div>
+							<div class="menu-item active">
+								<a href="../manual-file-analisys/manual-file-analisys-log.html" class="menu-link">
+									<span class="menu-text">수동 파일 분석 로그</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 설정 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-gear"></i>
+							</span>
+							<span class="menu-text">설정</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../settings/account-settings.html" class="menu-link">
+									<span class="menu-text">계정 설정</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../settings/connect-settings.html" class="menu-link">
+									<span class="menu-text">연동 설정</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../settings/backup-settings.html" class="menu-link">
+									<span class="menu-text">백업 설정</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../settings/user-detection.html" class="menu-link">
+									<span class="menu-text">사용자 탐지룰</span>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- END menu -->
+			</div>
+			<!-- END scrollbar -->
+		</div>
+		<!-- END #sidebar -->
+
+		<!-- BEGIN mobile-sidebar-backdrop -->
+		<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+		<!-- END mobile-sidebar-backdrop -->
+		
+		<!-- BEGIN #content -->
+		<div id="content" class="app-content">
+			<div class="d-flex align-items-center justify-content-between mb-2">
+				<h4 class="mb-0">수동 파일 분석 로그</h4>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">수동 파일 분석</a></li>
+					<li class="breadcrumb-item active">수동 파일 분석 로그</li>
+				</ul>
+			</div>
+			
+			<div class="card">
+				<div class="section-alnalisys-log p-4">
+					<div class="" id="">
+						<article class="d-flex mb-4 justify-content-between align-items-center">
+							<div>
+								<button class="btn btn-sm btn-outline-theme">
+									<span>총 123,213 건</span>
+									<i class="fas fa-lg fa-fw me-2 fa-download"></i>
+								</button>
+							</div>
+
+							<!-- BEGIN input-group -->
+							<div class="col-6 d-flex fillter--serching-group">
+								<div class="flex-fill position-relative">
+									<from class="input-group">
+										<input id="searchVal" name="searchTag" type="text" class="form-control px-35px" placeholder="Filter orders" onkeydown="search(this)"/>
+										<div class="input-group-text position-absolute top-0 bottom-0 bg-none border-0 start-0" style="z-index: 1020;">
+											<i class="fa fa-search opacity-5"></i>
+										</div>
+									</from>
+								</div>
+								<div class="buttons-toolbar"></div>
+								<button
+									id="fillterBtn" 
+									class="btn btn btn-outline-default rounded-0 flex-shrink-0" 
+									type="button" 
+									style="border-right: 0;">
+										<i class="bi bi-funnel"></i> 필터
+								</button>
+								<button 
+									class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" type="button" 
+									onclick="search(this)">
+										검색
+								</button>
+							</div>
+							<!-- END input-group -->
+						</article>
+
+						<!-- result seach tag div -->
+						<div id="searching_tag" class="d-flex flex-wrap"></div>
+						
+						<!-- BEGIN table -->
+						<div class="table-responsive">
+							<table id="table" class="table-sm text-nowrap fs-12px"
+								data-toggle="table"
+								data-sort-class="table-active"
+								data-sortable="true"
+								data-pagination="true"
+								data-show-refresh="true"
+								data-show-columns="true"
+								data-buttons-toolbar=".buttons-toolbar">
+								<thead>
+									<tr>
+										<th>시간</th>
+										<th>사용자</th>
+										<th>설명</th>
+										<th>분석 결과</th>
+										<th>AI 분석 결과</th>
+										<th>관리</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="align-middle">
+											2021-11-17 <br>10:01:22
+										</td>
+										<td class="align-middle">OSINT1<br>192.168.1.96:8443</td>
+										<td class="align-middle">
+											<ul>
+												<li>
+													분석 대상(File) : 
+													<span class="text-danger text-decoration-underline">테스트 파일2.docx</span>
+												</li>
+												<li>서버 IP : 203.233.85.2:80 ( KR )</li>
+												<li>URL : <a href="#">http://www.kyobo.co.kr/appFree/js/appfreeCommon.js</a></li>
+											</ul>
+										</td>
+										<td class="align-middle">
+											평판분석: <span class="badge bg-danger">악성</span>
+										</td>
+										<td class="align-middle">
+											<strong class="text-theme">12.2</strong>
+										</td>
+										<td class="align-middle">
+											<button class="btn btn-sm btn-primary">다운로드</button>
+										</td>
+									</tr>
+									<tr class="hand" data-bs-toggle="modal" data-bs-target="#modalXl">
+										<td class="align-middle">
+											2021-11-17 <br>10:01:22
+										</td>
+										<td class="align-middle">OSINT1<br>192.168.1.96:8443</td>
+										<td class="align-middle">
+											<ul>
+												<li>
+													분석 대상(File) : 
+													<span class="text-success text-decoration-underline">테스트 파일2.docx</span>
+												</li>
+												<li>서버 IP : 203.233.85.2:80 ( KR )</li>
+												<li>URL : <a href="#">http://www.kyobo.co.kr/appFree/js/appfreeCommon.js</a></li>
+											</ul>
+										</td>
+										<td class="align-middle">
+											평판분석: <span class="badge bg-success">정상</span>
+										</td>
+										<td class="align-middle">
+											<strong class="text-theme">12.2</strong>
+										</td>
+										<td class="align-middle">
+											<button class="btn btn-sm btn-primary">다운로드</button>
+										</td>
+									</tr>
+									<tr class="hand">
+										<td class="align-middle">
+											2021-11-17 <br>10:01:22
+										</td>
+										<td class="align-middle">OSINT1<br>192.168.1.96:8443</td>
+										<td class="align-middle">
+											<ul>
+												<li>
+													분석 대상(File) : 
+													<span class="text-danger text-decoration-underline">테스트 파일2.docx</span>
+												</li>
+												<li>서버 IP : 203.233.85.2:80 ( KR )</li>
+												<li>URL : <a href="#">http://www.kyobo.co.kr/appFree/js/appfreeCommon.js</a></li>
+											</ul>
+										</td>
+										<td class="align-middle">
+											<ul>
+												<li class="d-flex align-items-center">
+													AV분석 : <span class="badge badge-overflow-ellipsis">Gen.Trojan.Hedssdkosdfkds</span></li>
+												<li class="d-flex align-items-center">
+													정적 분석 : 
+													<input 
+													id="input-1-ltr-star-xs" 
+													name="input-1-ltr-star-xs" 
+													class="kv-ltr-theme-fas-star rating-loading" 
+													value="3" 
+													dir="ltr" 
+													data-size="xs" />
+												</li>
+												<li class="d-flex align-items-center">
+													동적 분석 : 
+													<input 
+													id="input-1-ltr-star-xs" 
+													name="input-1-ltr-star-xs" 
+													class="kv-ltr-theme-fas-star rating-loading" 
+													value="3" 
+													dir="ltr" 
+													data-size="xs" />
+												</li>
+												<li>분석 결과: <span class="badge bg-danger">악성</span></li>
+											</ul>
+										</td>
+										<td class="py-1 align-middle">
+											유사도 : <strong class="text-theme">95.34%</strong><br>
+											공격 유형 : <span class="badge">Trojan</span>
+										</td>
+										<td class="align-middle">
+											<button class="btn btn-sm btn-primary">다운로드</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					
+						<!-- END table -->
+					
+					</div>
+				</div>
+
+
+				
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+
+			</div>
+
+		</div>
+		
+		<!-- END #content -->
+		
+		<!-- BEGIN btn-scroll-top -->
+		<a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+		<!-- END btn-scroll-top -->
+	
+		<!-- BEGIN 조건 검색 panel -->
+		<div class="app-theme-panel">
+			<div class="app-theme-panel-container" style="top: 215px;">
+				<div class="app-theme-panel-content">
+					<div class="small fw-bold text-white mb-1 d-flex justify-content-between align-items-center">
+						<span>Fillter</span>
+						<button class="btn btn-sm" data-toggle="theme-panel-expand"><i class="bi bi-x"></i></button>
+					</div>
+					<div class="card mb-3">
+						<!-- BEGIN card-body -->
+						<div class="card-body">
+							<article id="content-filltering" class="content-filltering show" aria-labelledby="fillterBtn">
+								<div class="row">
+									<div class="col-6">
+										<label for="">조건 검색</label>
+										<!-- 전체 분류 -->
+										<div class="form-group mb-0">
+											<select id="def2" class="form-select">
+												<option value="전체" selected="">전체</option>
+												<option value="">정상</option>
+												<option value="">악성</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-6">
+										<!-- 사용자 선택 -->
+										<label for="">사용자 선택</label>
+										<div class="form-group mb-0">
+											<select class="form-select">
+												<option selected="selected" value="">사용자</option>
+												<option value="">설명</option>
+												<option value="">분석 결과</option>
+												<option value="">AI 분석 결과</option>
+												<option value="">공격 유형</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<!-- 날짜 설정 -->
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group mt-2 mb-0">
+											<label for="">날짜 설정 :</label>
+											<div class="input-group input-daterange" id="">
+												<input id="date_timepicker_start" type="text" class="form-control" placeholder="시작 날짜" />
+												<span class="input-group-text">to</span>
+												<input id="date_timepicker_end" type="text" class="form-control" placeholder="끝 날짜" />
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row mt-2">
+									<!-- AV 분석 결과 -->
+									<div class="col-6">
+										<div class="form-group mb-0">
+											<label for="">AV 분석 결과</label>
+											<select class="form-select">
+												<option value="" selected="">전체</option>
+												<option value="">정상</option>
+												<option value="">악성</option>
+											</select>
+										</div>
+									</div>
+
+									<!-- 정적 분석 결과 -->
+									<div class="col-6">
+										<div class="form-group mb-0">
+											<label for="">정적 분석 결과</label>
+											<select class="form-select">
+												<option selected="selected" value="">정적 분석</option>
+												<option value="">검사 완료</option>
+												<option value="">미분석</option>
+												<option value="">생략</option>
+												<option value="">타임아웃</option>
+												<option value="">분석 불가</option>
+												<option value="">위험도[1]</option>
+												<option value="">위험도[2]</option>
+												<option value="">위험도[3]</option>
+												<option value="">위험도[4]</option>
+												<option value="">위험도[5]</option>
+												<option value="">악성(위험도[4,5])</option>
+											</select>
+										</div>
+									</div>
+								</div><!-- end-of-row -->
+
+								<div class="row mt-2">
+									<!-- 동적 분석 결과 to do-->
+									<div class="col-6">
+										<div class="form-group mb-0">
+											<label for="">동적 분석 결과</label>
+											<select class="form-select">
+												<option value="" selected="">전체</option>
+												<option value="">정상</option>
+												<option value="">악성</option>
+											</select>
+										</div>
+									</div>
+
+									<!-- AI 분석 결과 -->
+									<div class="col-6">
+										<div class="form-group mb-0">
+											<label for="">AI 분석 결과</label>
+											<select class="form-select">
+												<option selected="selected" value="">전체</option>
+												<option value="">정상</option>
+												<option value="">악성</option>
+											</select>
+										</div>
+									</div>
+								</div><!-- end-of-row -->
+
+								<div class="row mt-2">
+									<!-- 평판 분석 결과 to do-->
+									<div class="col-6">
+										<div class="form-group mb-0">
+											<label for="">평판 분석 결과</label>
+											<select class="form-select">
+												<option value="" selected="">전체</option>
+												<option value="">정상</option>
+												<option value="">악성</option>
+											</select>
+										</div>
+									</div>
+
+									<!-- 분석 결과 to do -->
+									<div class="col-6">
+										<div class="form-group mb-0">
+											<label for="">분석 결과</label>
+											<select class="form-select">
+												<option selected="selected" value="">전체</option>
+												<option value="">정상</option>
+												<option value="">악성</option>
+											</select>
+										</div>
+									</div>
+								</div><!-- end-of-row -->
+
+								<div class="row mt-2">
+									<!-- 평판 분석 결과 to do-->
+									<div class="col-6">
+										<div class="form-group mb-0">
+											<label for="">상세 조건 검색</label>
+											<select class="form-select">
+												<option value="" selected="">분석 대상(File)</option>
+												<option value="">MD5</option>
+												<option value="">파일 크기</option>
+												<option value="">AI 분석 완료 시간</option>
+												<option value="">총 분석 시간</option>
+											</select>
+										</div>
+									</div>
+								</div><!-- end-of-row -->
+
+								<!-- 검색창 -->
+								<div class="mt-2">
+									<label for="">검색 :</label>
+									<div class="d-flex">
+										<div class="input-group">
+											<input id="fillterVal" type="text" name="searchTag" class="form-control px-35px" placeholder="Filter orders" onkeydown="search(this)">
+											<div class="input-group-text position-absolute top-0 bottom-0 bg-none border-0 start-0" style="z-index: 1020;">
+												<i class="fa fa-search opacity-5"></i>
+											</div>
+										</div>
+										
+										<button 
+											class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" 
+											type="button" 
+											onclick="search(this)">
+												검색
+										</button>
+
+										<button 
+											class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" 
+											type="button" 
+											onclick=""
+											data-bs-toggle="collapse" data-bs-target="#addingSearch">
+												검색어 추가
+										</button>
+										
+									</div>
+								</div>
+
+								<!-- 검색어 추가 -->
+								<div class="mt-2 collapse" id="addingSearch">
+									<label for="">검색어 추가 :</label>
+									<div class="d-flex">
+										<!-- and & or -->
+										<div class="flex-shrink-0">
+											<select id="conjunction" class="form-select" name="conjunction">   
+												<option value="and">AND</option>   
+												<option value="or">OR</option>
+											</select>
+										</div>
+										<div class="flex-shrink-0 mx-2 col-2">
+											<!-- 분류 -->
+											<select id="sortTest" class="form-select">
+												<option value="id">ID</option>   
+												<option value="b">분석 대상</option>   
+												<option value="c">파일 확장자</option>   
+												<option value="">Hash(MD5) </option>   
+												<option value="">안티 바이러스 결과 </option>   
+												<option value="">정적 분석 결과 </option>   
+												<option value="">동적 분석 결과 </option>   
+												<option value="">Parent ID </option>   
+												<option value="">다운로드URL</option>   
+												<option value="">메일 제목</option>   
+												<option value="">보낸 메일주소</option>   
+												<option value="">받은 메일주소</option>   
+												<option value="">참조 메일 주소</option>   
+												<option value="">EDR ID </option>   
+												<option value="">EDR PC명 </option>   
+												<option value="">EDR 그룹명 </option>   
+												<option value="">EDR 설명 </option>
+											</select>
+										</div>
+
+										<!-- 검색창 -->
+										<div class="input-group">
+											<input id="addSearchTag" type="text" name="addSearchTag" class="form-control px-35px" placeholder="Filter orders" onkeydown="addSearch(this)">
+											<div class="input-group-text position-absolute top-0 bottom-0 bg-none border-0 start-0" style="z-index: 1020;">
+												<i class="fa fa-search opacity-5"></i>
+											</div>
+										</div>
+				
+										<!-- 검색 버튼 -->
+										<button 
+											class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" 
+											type="button" 
+											onclick="addSearch(this)">
+												검색
+										</button>
+									</div>
+								</div>
+							</article>															
+							<!-- END theme-list -->
+						</div>
+						<!-- END card-body -->
+						
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow" style="z-index: 0;">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		<!-- END 조건 검색 panel -->
+
+	</div>
+	<!-- END #app -->
+		<!-- ================== BEGIN core-js ================== -->
+	<script src="../assets/js/vendor.min.js"></script>
+	<script src="../assets/js/app.min.js"></script>
+	<!-- ================== END core-js ================== -->
+	
+	<!-- ================== BEGIN page-js ================== -->
+	<script src="../assets/plugins/bootstrap-star-rating/js/star-rating.min.js"></script>
+	<script src="../assets/plugins/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/plugins/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
+	<script src="../assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+	<script src="../assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+	<script src="../assets/plugins/bootstrap-table/dist/bootstrap-table.min.js"></script>
+	<script src="../assets/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+	<script src="../assets/plugins/bootstrap-table/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.js"></script>
+	<script src="../assets/js/demo/common.demo.js"></script>
+	<script src="../assets/js/pages/web-crawling/web-crawling.js"></script>
+	<!-- ================== END page-js ================== -->
+</body>
+</html>
+
+	
