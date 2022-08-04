@@ -96,6 +96,7 @@
     "masonry-layout": "^4.2.2",
     "merge-stream": "^2.0.0",
     "moment": "^2.29.1",
+    "muuri": "^0.9.5",
     "pace-js": "^1.2.4",
     "packery": "^2.1.2",
     "parsleyjs": "^2.9.2",
@@ -107,6 +108,7 @@
     "summernote": "^0.8.20",
     "svgmap": "^2.7.1",
     "sweetalert2": "^11.4.0",
-    "tag-it": "^2.0.0"
+    "tag-it": "^2.0.0",
+    "web-animations-js": "^2.3.2"
   }
 }

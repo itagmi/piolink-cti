@@ -1,0 +1,280 @@
+@@include('../partial/head.html', {"title": "Dashboard", "css": [
+	'../assets/plugins/jvectormap-next/jquery-jvectormap.css',
+]})
+<link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<!-- required js -->
+<!-- <script src="../assets/plugins/chart.js/dist/chart.esm.js"/></script> -->
+<script src="../assets/plugins/chart.js/dist/chart.js"/></script>
+
+<style>
+.grid {
+  position: relative;
+}
+.item {
+  position: absolute;
+  width: 50%;
+  height: 200px;
+  line-height: 200px;
+  margin: 0px;
+  z-index: 1;
+}
+.item.muuri-item-hidden {
+  z-index: 0;
+}
+.item.muuri-item-releasing {
+  z-index: 2;
+}
+.item.muuri-item-dragging {
+  z-index: 3;
+}
+.item-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: red;
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+}
+.item.muuri-item-dragging .item-content {
+  background: blue;
+}
+.item.muuri-item-releasing .item-content {
+  background: blueViolet;
+}
+</style>
+
+	<!-- BEGIN #app -->
+	<div id="app" class="app">
+		@@include('../partial/header.html')
+		
+		@@include('../partial/sidebar.html', {"homeClass": "active"})
+		
+		<!-- BEGIN #content -->
+		<div id="content" class="app-content">
+			<!-- BEGIN row -->
+			<div class="grid">
+
+				<!-- 최근 24시간 날짜 BEGIN col-6 -->
+				<div class="col-6 item">
+					<!-- BEGIN card -->
+					<div class="card item-content">
+						<!-- BEGIN card-body -->
+						<div class="card-body">
+							test1
+						</div>
+						<!-- END card-body -->
+
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- 최근 24시간 날짜 END col-6 -->
+
+
+				<!-- 수집 현황 BEGIN col-6 -->
+				<div class="col-6 item">
+					<!-- BEGIN card -->
+					<div class="card item-content">
+						<!-- BEGIN card-body -->
+						<div class="card-body">
+							test2
+						</div>
+						<!-- END card-body -->
+	
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+
+					</div>
+				</div>
+				<!-- 수집 현황 END col-6 -->
+
+
+				<!--  FILE 분석 & URI 분석 BEGIN col-6 -->
+				<div class="col-6 item">
+					<!-- BEGIN card -->
+					<div class="card item-content">
+						<!-- BEGIN card-body -->
+						<div class="card-body" style="height: 159px;">
+							test3
+						</div>
+						<!-- END card-body -->
+	
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+
+					</div>
+				</div>
+				<!-- FILE 분석 & URI 분석 END col-6 -->
+
+				<!--  웹 위변조 모니터링 BEGIN col-6 -->
+				<div class="col-6 item ">
+					<!-- BEGIN card -->
+					<div class="card item-content">
+						<!-- BEGIN card-body -->
+						<div class="card-body" style="height: 402px;">
+							test4
+						</div>
+						<!-- END card-body -->
+
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- 웹 위변조 모니터링 END col-6 -->
+
+				<!-- 시스템 정보 BEGIN col-6 -->
+				<div class="col-6 item">
+					<div class="card item-content">
+
+						<!-- BEGIN card-body -->
+						<div class="card-body">
+							test5
+						</div>
+						<!-- END card-body -->
+	
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+					</div>
+					<!-- 시스템 정보 END col-6 -->
+				</div>
+
+				<!-- AI분석 예측 결과 BEGIN col-6 -->
+				<div class="col-6 item">
+					<div class="card item-content">
+						<!-- BEGIN card-body -->
+						<div class="card-body">
+							test6
+						</div>
+						<!-- END card-body -->
+	
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+					</div>
+				</div>
+				<!-- AI분석 예측 결과 END col-6 -->
+				
+				<!-- BEGIN row -->
+				<!-- <div class="col-6"> -->
+					<!-- 사이버 위협 정보
+					BEGIN col-5 -->
+					<div class="col-3 item">
+						<!-- BEGIN card -->
+						<div class="card item-content" style="height: 402px;">
+							<!-- BEGIN card-body -->
+							<div class="card-body">
+								test7
+							</div>
+							<!-- END card-body -->
+
+							<!-- BEGIN card-arrow -->
+							<div class="card-arrow">
+								<div class="card-arrow-top-left"></div>
+								<div class="card-arrow-top-right"></div>
+								<div class="card-arrow-bottom-left"></div>
+								<div class="card-arrow-bottom-right"></div>
+							</div>
+							<!-- END card-arrow -->
+						</div>
+						<!-- END card -->
+					</div>
+					<!-- END col-5 -->
+
+					<!-- 사고 분석 section -->
+					<section class="col-3 item">
+						<!-- BEGIN card -->
+						<div class="card item-content">
+							<!-- BEGIN card-body -->
+							<div class="card-body">
+								test8
+							</div>
+							<!-- END card-body -->
+
+							<!-- BEGIN card-arrow -->
+							<div class="card-arrow">
+								<div class="card-arrow-top-left"></div>
+								<div class="card-arrow-top-right"></div>
+								<div class="card-arrow-bottom-left"></div>
+								<div class="card-arrow-bottom-right"></div>
+							</div>
+							<!-- END card-arrow -->
+						</div>
+						<!-- END card -->
+					</section>
+
+				<!-- </div> -->
+			</div>
+			<!-- END row -->
+		</div>
+		<!-- END #content -->
+		
+		@@include('../partial/scroll-top-btn.html')
+	</div>
+	<!-- END #app -->
+	<script src="../assets/plugins/highcharts/highcharts.js"></script>
+	<script src="../assets/plugins/highcharts/highcharts-more.js"></script>
+	<script src="../assets/plugins/highcharts/modules/solid-gauge.js"></script>
+
+	@@include('../partial/script.html', {"script": [
+		'../assets/plugins/jvectormap-next/jquery-jvectormap.min.js',
+		'../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js',
+
+		'../assets/plugins/apexcharts/dist/apexcharts.min.js',
+		
+		'../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+
+		'../assets/js/demo/common.demo.js',
+		'../assets/js/pages/main/main.js'
+	]})
+
+	
+<!-- muuri -->
+<script src="../assets/plugins/web-animations-js/web-animations.min.js"></script>
+<script src="../assets/plugins/muuri/dist/muuri.min.js"></script>
+
+
+<script>
+	var grid = new Muuri('.grid', {
+		dragEnabled: true
+	});
+</script>

@@ -90,7 +90,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="hand" data-bs-toggle="modal" data-bs-target="#modalXl">
+									<tr id="def222" class="hand">
 										<td class="align-middle">
 											2021-11-17 <br>10:01:22
 										</td>
@@ -141,9 +141,9 @@
 												<li>공격 유형 : none</li>
 											</ul>
 										</td>
-										<td><button class="btn btn-sm btn-primary">다운로드</button></td>
+										<td><button id="not-modal-btn" class="btn btn-sm btn-primary">다운로드</button></td>
 									</tr>
-									<tr class="hand" data-bs-toggle="modal" data-bs-target="#modalXl">
+									<tr class="hand">
 										<td class="align-middle">
 											2021-11-17 <br>10:01:22
 										</td>
@@ -1804,3 +1804,18 @@
 		'../assets/js/pages/web-crawling/web-crawling.js',
 	]})
 	
+	<script>
+		//table tr을 클릭 하면 모달창 show
+		$('#table').on('click', 'tbody tr', function (e) {
+			$('#modalXl').modal('show');
+		})
+
+		//table tr 안에 button modal event 막는 스크립트
+		$('#table').on('click', 'tbody tr button', function (e) {
+			e.stopPropagation();
+		})
+
+		$('#def222').on('click', function(){
+			console.log('되니')
+		})
+	</script>

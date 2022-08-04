@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>대검찰청 악성코드 분석 시스템 | Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<!-- App favicon -->
+	<link rel="shortcut icon" href="../assets/img/favicon.ico">
+	
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="../assets/css/vendor.min.css" rel="stylesheet" />
+	<link href="../assets/css/app.min.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+	
+		<!-- ================== BEGIN page-css ================== -->
+		
+		<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+		<!-- ================== END page-css ================== -->
+	
+</head>
+<body>
+<link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<!-- required js -->
+<!-- <script src="../assets/plugins/chart.js/dist/chart.esm.js"/></script> -->
+<script src="../assets/plugins/chart.js/dist/chart.js"/></script>
+
+	<!-- BEGIN #app -->
+	<div id="app" class="app">
+		<!-- BEGIN #header -->
+		<div id="header" class="app-header">
+			<!-- BEGIN desktop-toggler -->
+			<div class="desktop-toggler">
+				<button id="def" type="button" class="menu-toggler" data-toggle-class="app-sidebar-collapsed" data-dismiss-class="app-sidebar-toggled" data-toggle-target=".app">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+			</div>
+
+			<!-- <button onclick="checkToggle()">aaa</button> -->
+
+			<!-- BEGIN desktop-toggler -->
+			
+			<!-- BEGIN mobile-toggler -->
+			<div class="mobile-toggler">
+				<button type="button" class="menu-toggler" data-toggle-class="app-sidebar-mobile-toggled" data-toggle-target=".app">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+			</div>
+			<!-- END mobile-toggler -->
+			
+			<!-- BEGIN brand -->
+			<div class="brand">
+				<a href="../main/index.html" class="brand-logo">
+					<span class="brand-img">
+						<span class="brand-img-text text-theme">PIOLINK CTI</span>
+					</span>
+					<span class="brand-text">v2.0</span>
+				</a>
+			</div>
+			<!-- END brand -->
+			
+			<!-- BEGIN menu -->
+			<div class="menu">
+				<div class="menu-item ">
+					<a href="#" class="menu-link">
+						<i class="bi bi-clock me-2" style="margin-top: 2px;"></i> 
+						<span id="time">08:00</span>
+					</a>
+				</div>
+				<div class="menu-item dropdown dropdown-mobile-full">
+					<a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
+						<div class="menu-text d-sm-block d-none">
+							guest
+							<i class="fas fa-lg fa-fw me-2 fa-angle-down" style="font-size: 8px;"></i>
+						</div>
+					</a>
+					<div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1" style="width: 226px">
+						<div style="padding: 0 16px;">
+							<table class="table table-bordered table-sm text-center my-2">
+								<thead>
+										<tr>
+												<th>아이디</th>
+												<th>IP</th>
+												<th>시간</th>
+										</tr>
+								</thead>
+								<tbody>
+										<tr>
+												<td>defuguer</td>
+												<td>1.1.1.1</td>
+												<td>2021-10-26 18:13:01</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item d-flex align-items-center" href="../main/login.html">LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
+					</div>
+				</div>
+			</div>
+			<!-- END menu -->
+			
+			<!-- BEGIN menu-search -->
+			<form class="menu-search" method="POST" name="header_search_form">
+				<div class="menu-search-container">
+					<div class="menu-search-icon"><i class="bi bi-search"></i></div>
+					<div class="menu-search-input">
+						<input type="text" class="form-control form-control-lg" placeholder="Search menu..." />
+					</div>
+					<div class="menu-search-icon">
+						<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app"><i class="bi bi-x-lg"></i></a>
+					</div>
+				</div>
+			</form>
+			<!-- END menu-search -->
+		</div>
+		<!-- END #header -->
+
+		<!-- when mobile size resolution warn page -->
+		<div class="mobile-size">
+	<div class="wrapperMessage">
+			<div class="logo-wrap">
+				<img src="../assets/img/login-zombie-zero-logo.svg" alt="">
+			</div>
+			<div class="errorInfo">
+					
+				<h1>Increase the page size</h1>
+				<p>이 페이지는 <br> 해상도 <span>1280px</span>이상 에 최적화 되어있습니다.</p>
+													
+			</div>
+	</div>
+</div>
+		
+				<!-- BEGIN #sidebar -->
+		<div id="sidebar" class="app-sidebar">
+			<!-- BEGIN scrollbar -->
+			<div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
+				<!-- BEGIN menu -->
+				<div class="menu">
+					<div class="menu-header">Administor</div>
+					<!-- 전체 대시보드 -->
+					<div class="menu-item active">
+						<a href="../main/index.html" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-cpu"></i></span>
+							<span class="menu-text">Dashboard</span>
+						</a>
+					</div>
+					<!-- 사이트 별 대시보드 -->
+					<div class="menu-item">
+						<a href="../main/index-site.html" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-cpu"></i></span>
+							<span class="menu-text">Dashboard</span>
+						</a>
+					</div>
+					<!-- 사이버 위협정보 -->
+					<div class="menu-item">
+						<a href="../web-crawling/web-crawling.html" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-bug"></i></span>
+							<span class="menu-text">사이버 위협정보</span>
+						</a>
+					</div>
+					<!-- 웹 위/변조 모니터링 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-window"></i>
+							</span>
+							<span class="menu-text">웹 위/변조 모니터링</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../web-falsify-monitoring/web-monitoring.html" class="menu-link">
+									<span class="menu-text">웹 모니터링</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../web-falsify-monitoring/web-monitoring-info.html" class="menu-link">
+									<span class="menu-text">웹 모니터링 상세 정보</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 사고 분석 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-pie-chart"></i>
+							</span>
+							<span class="menu-text">사고 분석</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../accident-analisys/analisys-request.html" class="menu-link">
+									<span class="menu-text">분석 요청</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../accident-analisys/accident-analisys-log.html" class="menu-link">
+									<span class="menu-text">사고 분석 로그</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 수동 파일 분석 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-folder-check"></i>
+							</span>
+							<span class="menu-text">수동 파일 분석</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../manual-file-analisys/manual-file-upload.html" class="menu-link">
+									<span class="menu-text">수동 파일 업로드</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../manual-file-analisys/manual-file-analisys-log.html" class="menu-link">
+									<span class="menu-text">수동 파일 분석 로그</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 설정 -->
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="bi bi-gear"></i>
+							</span>
+							<span class="menu-text">설정</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="../settings/account-settings.html" class="menu-link">
+									<span class="menu-text">계정 설정</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../settings/connect-settings.html" class="menu-link">
+									<span class="menu-text">연동 설정</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../settings/backup-settings.html" class="menu-link">
+									<span class="menu-text">백업 설정</span>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="../settings/user-detection.html" class="menu-link">
+									<span class="menu-text">사용자 탐지룰</span>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- END menu -->
+			</div>
+			<!-- END scrollbar -->
+		</div>
+		<!-- END #sidebar -->
+
+		<!-- BEGIN mobile-sidebar-backdrop -->
+		<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+		<!-- END mobile-sidebar-backdrop -->
+		
+		<!-- BEGIN #content -->
+		<div id="content" class="app-content">
+			<!-- BEGIN row -->
+			<div class="grid">
+
+				<!-- 최근 24시간 날짜 BEGIN col-6 -->
+				<div class="col-6 grid-item">
+					<!-- BEGIN card -->
+					<div class="card mb-3">
+						<!-- BEGIN card-body -->
+						<div class="card-body">
+							<ul class="d-flex align-items-center mb-0">
+								<li class="flex-shrink-0">
+									<button class="btn btn-sm btn-secondary" type="button">최근 24시간</button>
+								</li>
+								<li class="mx-2 flex-grow-1">
+									<div class="input-group input-daterange" id="datepicker">
+										<input type="text" class="form-control" name="start" placeholder="start date" />
+										<span class="input-group-text">to</span>
+										<input type="text" class="form-control" name="end" placeholder="end date" />
+									</div>
+								</li>
+								<li class="flex-shrink-0">
+									<button class="btn btn-sm btn-success">검색</button>
+								</li>
+							</ul>
+						</div>
+						<!-- END card-body -->
+
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- 최근 24시간 날짜 END col-6 -->
+
+
+				<!-- 수집 현황 BEGIN col-6 -->
+				<div class="col-6 grid-item">
+					<!-- BEGIN card -->
+					<div class="card mb-3">
+						<!-- BEGIN card-body -->
+						<div class="card-body">
+							<!-- BEGIN title -->
+							<div class="d-flex fw-bold small mb-3">
+								<span class="flex-grow-1">수집 현황</span>
+							</div>
+							<!-- END title -->
+							<!-- BEGIN content -->
+							<ul class="collection-condition mt-2 d-flex justify-content-around" style="text-align:center;">
+
+								<li>
+									<h3 class="badge mb-0">
+										<div>사이버 위협 정보</div>
+										<span class="badge bg-secondary mb-0 ms-1 mt-1">(Web Crawler)</span>
+									</h3>
+									<h4 class="rounded-bottom py-1 flex-column">
+										<div>
+											<span class="h6 me-2">URI:</span>12,000
+										</div>
+										<div>
+											<span class="h6 me-2">File:</span>12
+										</div>
+									</h4>
+								</li>
+
+								<li>
+									<h3 class="badge mb-0">
+										<div>웹 위/변조 모니터링</div>
+										<span class="badge bg-secondary mb-0 ms-1 mt-1">(URL Hunter)</span>
+									</h3>
+									<h4 class="rounded-bottom py-1"><span class="h6 me-2">URI:</span> 12,000</h4>
+								</li>
+
+								<!-- <li>
+									<h3 class="badge mb-0">
+										<div>사고 분석</div>
+										<span class="badge bg-secondary mb-0 ms-1 mt-1">(IR Hunter)</span>
+									</h3>
+									<h4 class="rounded-bottom py-1"><span class="h6 me-2">File:</span> 12</h4>
+								</li> -->
+
+								<li>
+									<h3 class="badge mb-0">수동 파일 분석</h3>
+									<h4 class="rounded-bottom py-1"><span class="h6 me-2">File:</span> 12</h4>
+								</li>
+
+							</ul>
+						<!-- END content -->
+					</div>
+						<!-- END card-body -->
+	
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+
+					</div>
+				</div>
+				<!-- 수집 현황 END col-6 -->
+
+
+				<!--  FILE 분석 & URI 분석 BEGIN col-6 -->
+				<div class="col-6 grid-item">
+					<!-- BEGIN card -->
+					<div class="card mb-3">
+						<!-- BEGIN card-body -->
+						<div class="card-body" style="height: 159px;">
+							<section class="row">
+								<article class="col-6">
+									<div class="d-flex fw-bold small">
+										<span class="flex-grow-1">FILE 분석</span>
+									</div>
+									<!-- BEGIN content -->
+									<ul class="file-analisys mt-2 d-flex justify-content-between" style="text-align:center;">
+										<li>
+											<h3 class="badge mb-0">수집 파일</h3>
+											<h4 class="rounded-bottom py-1 mt-2">12</h4>
+										</li>
+
+										<li class="mx-2">
+											<h3 class="badge mb-0">행위 분석중</h3>
+											<h4 class="rounded-bottom py-1 mt-2">12</h4>
+										</li>
+
+										<li class="me-2">
+											<h3 class="badge mb-0">AI 분석중</h3>
+											<h4 class="rounded-bottom py-1 mt-2">12</h4>
+										</li>
+
+										<li>
+											<h3 class="badge mb-0">분석 완료</h3>
+											<h4 class="rounded-bottom py-1 mt-2">12</h4>
+										</li>
+									</ul>
+									<!-- END content -->
+								</article>
+								<article class="col-6">
+									<div class="d-flex fw-bold small">
+										<span class="flex-grow-1">URI 분석</span>
+									</div>
+									<!-- BEGIN content -->
+									<ul class="file-analisys mt-2 d-flex justify-content-between" style="text-align:center;">
+										<li>
+											<h3 class="badge mb-0">수집 URL</h3>
+											<h4 class="rounded-bottom py-1 mt-2">12</h4>
+										</li>
+	
+										<li class="mx-2"> 
+											<h3 class="badge mb-0">행위 분석중</h3>
+											<h4 class="rounded-bottom py-1 mt-2">12</h4>
+										</li>
+	
+										<li>
+											<h3 class="badge mb-0">분석 완료</h3>
+											<h4 class="rounded-bottom py-1 mt-2">12</h4>
+										</li>
+									</ul>
+								</article>
+							</section>
+						</div>
+						<!-- END card-body -->
+	
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+
+					</div>
+				</div>
+				<!-- FILE 분석 & URI 분석 END col-6 -->
+
+				<!--  웹 위변조 모니터링 BEGIN col-6 -->
+				<div class="col-6 grid-item">
+					<!-- BEGIN card -->
+					<div class="card">
+						<!-- BEGIN card-body -->
+						<div class="card-body" style="height: 402px;">
+							<!-- BEGIN title -->
+							<div class="d-flex fw-bold small mb-3">
+								<span class="flex-grow-1">웹 위/변조 모니터링</span>
+								<ul>
+									<li class="text-success">모니터링: 3</li>
+									<li class="text-danger">웹 위/변조 모니터링: 1</li>
+								</ul>
+							</div>
+							<!-- END title -->
+							<article class="web-monitoring">
+								<ul>
+									<li>
+										<div class="border-danger"></div>
+										<h6>ABC 마트</h6>
+									</li>
+									<li>
+										<div class="border-success"></div>
+										<h6>ABC 마트</h6>
+									</li>
+									<li>
+										<div class="border-success"></div>
+										<h6>ABC 마트</h6>
+									</li>
+									<li>
+										<div class="border-success"></div>
+										<h6>ABC 마트</h6>
+									</li>
+									<li class="mt-3">
+										<div class="border-success"></div>
+										<h6>ABC 마트</h6>
+									</li>
+									<li class="mt-3">
+										<div class="border-success"></div>
+										<h6>ABC 마트</h6>
+									</li>
+									<li class="mt-3">
+										<div class="border-success"></div>
+										<h6>ABC 마트</h6>
+									</li>
+									<li class="mt-3">
+										<div class="border-success"></div>
+										<h6>ABC 마트</h6>
+									</li>
+								</ul>
+							</article>
+
+						</div>
+						<!-- END card-body -->
+
+						<!-- BEGIN card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+						<!-- END card-arrow -->
+					</div>
+					<!-- END card -->
+				</div>
+				<!-- 웹 위변조 모니터링 END col-6 -->
+
+				<!-- 시스템 정보 BEGIN col-6 -->
+				<div class="col-6 grid-item card">
+					<!-- BEGIN card-body -->
+					<div class="card-body">
+						<div class="d-flex fw-bold small mb-3">
+							<span class="flex-grow-1">시스템 정보</span>
+						</div>
+
+						<div class="col-lg-12">
+							<div class="d-flex justify-content-between">
+								<div>
+									<h6 class="text-center">CPU: 4Core (2.4Ghz)</h6>
+									<figure class="highchart-cpu">
+										<div id="container"></div>
+									</figure>
+								</div>
+								<div>
+									<h6 class="text-center">RAM : 12GB/16GB</h6>
+									<figure class="highchart-cpu">
+										<div id="container2"></div>
+									</figure>
+								</div>
+								<div>
+									<h6 class="text-center">Network Traffic</h6>
+									<figure class="highchart-cpu">
+										<div id="container3"></div>
+									</figure>
+								</div>
+								<div>
+									<h6 class="text-center">DISK info</h6>
+									<table class="table table-sm mb-0 text-center" style="font-size: 12px;">
+										<tbody>
+											<tr>
+												<td class="table-dark">System©</td>
+												<td>43GB/100GB</td>
+											</tr>
+											<tr>
+												<td class="table-dark">Bufferⓓ</td>
+												<td>42GB/100GB</td>
+											</tr>
+											<tr>
+												<td class="table-dark">Dataⓔ</td>
+												<td>31GB/100GB</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<div class="content-system-info col-lg-12 d-flex justify-content-around mt-2">
+							<!-- 행위 분석 시스템 -->
+							<article>
+								<h6 class="text-center">행위 분석 시스템</h6>
+								<ul class="d-flex">
+									<li class="me-3 d-flex flex-column align-items-start">
+										<p class="text-success">정상: 298</p>
+										<p class="text-danger">장애: 28</p>
+									</li>
+									<li class="d-flex flex-column align-items-start">
+										<p class="text-suceess">대기중: 298</p>
+										<p class="text-warning">분석중: 28</p>
+									</li>
+								</ul>
+							</article>
+
+							<!-- AI 분석 시스템 -->
+							<article>
+								<h6 class="text-center">AI 분석 시스템</h6>
+								<ul class="d-flex">
+									<li class="me-3 d-flex flex-column align-items-start">
+										<p class="text-success">정상: 298</p>
+										<p class="text-danger">장애: 28</p>
+									</li>
+									<li class="d-flex flex-column align-items-start">
+										<p class="text-suceess">대기중: 298</p>
+										<p class="text-warning">분석중: 28</p>
+									</li>
+								</ul>
+							</article>
+
+							<!-- 연동 시스템 -->
+							<article>
+								<h6 class="text-center">연동 시스템</h6>
+								<ul class="d-flex">
+									<li class="me-3 d-flex flex-column align-items-start">
+										<p class="text-success">정상: 298</p>
+										<p class="text-danger">장애: 28</p>
+									</li>
+									<li class="d-flex flex-column align-items-start">
+										<p class="text-danger">OSINT3</p>
+										<p class="text-warning">AI 분석 서버1</p>
+									</li>
+								</ul>
+							</article>
+						</div>
+
+					</div>
+					<!-- END card-body -->
+
+					<!-- BEGIN card-arrow -->
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
+					</div>
+					<!-- END card-arrow -->
+				</div>
+				<!-- 시스템 정보 END col-6 -->
+
+				<!-- AI분석 예측 결과 BEGIN col-6 -->
+				<div class="col-6 card grid-item">
+					<!-- BEGIN card-body -->
+					<div class="card-body">
+						<div class="d-flex fw-bold small mb-2">
+							<span class="flex-grow-1">AI 분석 예측 결과</span>
+						</div>
+						
+						<section class="d-flex">
+							<article class="content-ai-analisys w-50">
+								<ul class="d-flex">
+									<li class="w-50">
+										<div class="chart-ai-analisys">
+											<canvas id="doughnutChart"></canvas>
+											<div class="label-text">
+												93.1
+											</div>
+											<h6 class="text-center mb-0">유사도</h6>
+										</div>
+										<!-- <canvas id="chart"></canvas> -->
+									</li>
+									<li class="w-50">
+										<div class="chart-ai-analisys">
+											<canvas id="doughnutChart2"></canvas>
+											<div class="label-text">
+												11
+											</div>
+											<h6 class="text-center mb-0">스코어</h6>
+										</div>
+									</li>
+								</ul>
+							</article>
+
+							<table class="table table-sm mb-0 text-center w-50" style="font-size: 12px;">
+								<thead class="table-dark">
+									<tr>
+										<th>#</th>
+										<th>공격 유형</th>
+										<th>건수</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>test</td>
+										<td>1,234</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>test</td>
+										<td>1,234</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>test</td>
+										<td>1,234</td>
+									</tr>
+								</tbody>
+							</table>
+						</section>
+
+					</div>
+					<!-- END card-body -->
+
+					<!-- BEGIN card-arrow -->
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
+					</div>
+					<!-- END card-arrow -->
+				</div>
+				<!-- AI분석 예측 결과 END col-6 -->
+				
+				<!-- BEGIN row -->
+				<!-- <div class="col-6 gird-item"> -->
+					<!-- 사이버 위협 정보
+					BEGIN col-5 -->
+					<div class="col-5 gird-item">
+						<!-- BEGIN card -->
+						<div class="card" style="height: 402px;">
+							<!-- BEGIN card-body -->
+							<div class="card-body">
+								<!-- BEGIN title -->
+								<div class="d-flex fw-bold small mb-3">
+									<span class="flex-grow-1">사이버 위협 정보</span>
+									<ul>
+										<li class="text-success">정상: 3</li>
+										<li class="text-danger">장애: 1 (OSINT3)</li>
+									</ul>
+								</div>
+								<!-- END title -->
+								<article class="content-cyber-info mt-4">
+									<ul>
+										<li class="badge bg-success">OSINT1</li>
+										<li class="badge bg-success mx-3">OSINT2</li>
+										<li class="badge bg-danger">OSINT3</li>
+									</ul>
+									<h6 class="d-flex flex-column align-items-center">
+										<i class="fa-solid fa-bug"></i>
+										<span>웹크롤러</span>
+									</h6>
+								</article>
+
+								<div class="table-responsive" style="margin-top: 56px;">
+									<table class="table table-sm mb-0 text-center">
+										<thead class="table-dark">
+											<tr>
+												<th>#</th>
+												<th>이름</th>
+												<th>IP</th>
+												<th>Domain</th>
+												<th>File</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>test</td>
+												<td>1,234</td>
+												<td>1,234</td>
+												<td>1,234</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>test</td>
+												<td>1,234</td>
+												<td>1,234</td>
+												<td>1,234</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>test</td>
+												<td>1,234</td>
+												<td>1,234</td>
+												<td>1,234</td>
+											</tr>
+											<!-- <tr>
+												<td>4</td>
+												<td>test</td>
+												<td>1,234</td>
+												<td>1,234</td>
+												<td>1,234</td>
+											</tr>
+											<tr>
+												<td>5</td>
+												<td>test</td>
+												<td>1,234</td>
+												<td>1,234</td>
+												<td>1,234</td>
+											</tr> -->
+										</tbody>
+									</table>
+								</div>
+
+							</div>
+							<!-- END card-body -->
+
+							<!-- BEGIN card-arrow -->
+							<div class="card-arrow">
+								<div class="card-arrow-top-left"></div>
+								<div class="card-arrow-top-right"></div>
+								<div class="card-arrow-bottom-left"></div>
+								<div class="card-arrow-bottom-right"></div>
+							</div>
+							<!-- END card-arrow -->
+						</div>
+						<!-- END card -->
+					</div>
+					<!-- END col-5 -->
+
+					<!-- 사고 분석 section -->
+					<section class="col-7 gird-item">
+						<!-- BEGIN card -->
+						<div class="card mb-3">
+							<!-- BEGIN card-body -->
+							<div class="card-body">
+								<div class="d-flex fw-bold small mb-0">
+									<span class="flex-grow-1">사고 분석 (악성 탐지)</span>
+								</div>
+								
+								<article>
+									<div id="apexMultiChart" class="d-flex justify-content-center"></div>
+								</article>
+								
+								<table class="table table-sm mb-0 text-center" style="font-size: 12px;">
+									<thead class="table-dark">
+										<tr>
+											<th>종류</th>
+											<th>#1</th>
+											<th>#2</th>
+											<th>#3</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>AntiVirus</td>
+											<td>Backdoor <span class="badge bg-secondary">89</span></td>
+											<td>Worm <span class="badge bg-secondary">89</span></td>
+											<td>Trojan <span class="badge bg-secondary">89</span></td>
+										</tr>
+										<tr>
+											<td>정적 분석</td>
+											<td>Zombie.. <span class="badge bg-secondary">89</span></td>
+											<td>Incodi.. <span class="badge bg-secondary">89</span></td>
+											<td>Blackl.. <span class="badge bg-secondary">89</span></td>
+										</tr>
+										<tr>
+											<td>동적 분석</td>
+											<td>NoSign.. <span class="badge bg-secondary">89</span></td>
+											<td>Fileless.. <span class="badge bg-secondary">89</span></td>
+											<td>Rans.. <span class="badge bg-secondary">89</span></td>
+										</tr>
+										<tr>
+											<td>AI 분석예측</td>
+											<td>Backdoor <span class="badge bg-secondary">89</span></td>
+											<td>Worm <span class="badge bg-secondary">89</span></td>
+											<td>Trojan <span class="badge bg-secondary">89</span></td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+							<!-- END card-body -->
+
+							<!-- BEGIN card-arrow -->
+							<div class="card-arrow">
+								<div class="card-arrow-top-left"></div>
+								<div class="card-arrow-top-right"></div>
+								<div class="card-arrow-bottom-left"></div>
+								<div class="card-arrow-bottom-right"></div>
+							</div>
+							<!-- END card-arrow -->
+						</div>
+						<!-- END card -->
+					</section>
+
+				<!-- </div> -->
+
+			</div>
+			<!-- END row -->
+		</div>
+		<!-- END #content -->
+		
+		<!-- BEGIN btn-scroll-top -->
+		<a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+		<!-- END btn-scroll-top -->
+	</div>
+	<!-- END #app -->
+	<script src="../assets/plugins/highcharts/highcharts.js"></script>
+	<script src="../assets/plugins/highcharts/highcharts-more.js"></script>
+	<script src="../assets/plugins/highcharts/modules/solid-gauge.js"></script>
+
+		<!-- ================== BEGIN core-js ================== -->
+	<script src="../assets/js/vendor.min.js"></script>
+	<script src="../assets/js/app.min.js"></script>
+	<!-- ================== END core-js ================== -->
+	
+	<!-- ================== BEGIN page-js ================== -->
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="../assets/js/demo/common.demo.js"></script>
+	<script src="../assets/js/pages/main/main.js"></script>
+	<!-- ================== END page-js ================== -->
+</body>
+</html>
+
+
+	
+<!-- packery -->
+<script src="../assets/plugins/packery/dist/packery.pkgd.js"/></script>
+<script src="../assets/plugins/draggabilly/dist/draggabilly.pkgd.js"/></script>
+	<script>
+
+		// external js: packery.pkgd.js, draggabilly.pkgd.js
+
+		$(document).ready(function(){
+
+			var $grid = $('.grid').packery({
+				itemSelector: '.grid-item',
+				columnWidth: 100
+			});
+			
+			// make all grid-items draggable
+			$grid.find('.grid-item').each( function( i, gridItem ) {
+				var draggie = new Draggabilly( gridItem );
+				// bind drag events to Packery
+				$grid.packery( 'bindDraggabillyEvents', draggie );
+			});
+		});
+
+	</script>
