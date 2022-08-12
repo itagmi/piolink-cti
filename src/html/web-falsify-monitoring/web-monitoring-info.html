@@ -577,7 +577,7 @@
 		const ctx2 = document.getElementById('doughnutChart2');
 
 		// chart1 and chart2 use "plugin"
-		const chart1 = new Chart(ctx, {
+		let chart1 = new Chart(ctx, {
 			type: 'doughnut',
 			data: {
 				// labels: ['Total Visitor'],
@@ -590,7 +590,7 @@
 			}
 		});
 
-		const chart2 = new Chart(ctx2, {
+		let chart2 = new Chart(ctx2, {
 			type: 'doughnut',
 			data: {
 				// labels: ['Total Visitor'],
