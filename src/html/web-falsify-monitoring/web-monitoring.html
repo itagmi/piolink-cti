@@ -184,12 +184,19 @@
 												</from>
 											</div>
 											<div class="buttons-toolbar"></div>
-											<button
+											<!-- <button
 												id="fillterBtn" 
 												class="btn btn btn-outline-default rounded-0 flex-shrink-0" 
 												type="button" 
 												style="border-right: 0;">
 													<i class="bi bi-funnel"></i> 필터
+											</button> -->
+											<button 
+												class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" 
+												type="button" 
+												onclick=""
+												data-bs-toggle="collapse" data-bs-target="#addingSearch">
+													검색어 추가
 											</button>
 											<button 
 												class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" type="button" 
@@ -200,8 +207,106 @@
 										<!-- END input-group -->
 									</article>
 			
+									<!-- filter  -->
+									<article id="content-filltering" class="content-filltering show" aria-labelledby="fillterBtn">
+										<div class="row">
+											<div class="col-2">
+												<label for="">조건 검색</label>
+												<!-- 전체 분류 -->
+												<div class="form-group mb-0">
+													<select id="def2" class="form-select">
+														<option value="전체" selected="">전체</option>
+														<option value="">정상</option>
+														<option value="">악성</option>
+													</select>
+												</div>
+											</div>
+		
+											<div class="col-2">
+												<!-- 분류 -->
+												<label for="">분류</label>
+												<div class="form-group mb-0">
+													<select class="form-select">
+														<option selected="selected" value="">사이트</option>
+														<option value="">IP</option>
+														<option value="">Port</option>
+														<option value="">설명</option>
+														<option value="">분석 결과</option>
+														<option value="">AI 분석 결과</option>
+														<option value="">공격 유형</option>
+													</select>
+												</div>
+											</div>
+											
+											<!-- 날짜 설정 -->
+											<div class="col-5">
+												<label for="">날짜 설정</label>
+												<div class="form-group mb-0">
+													<div class="input-group input-daterange" id="">
+														<input id="date_timepicker_start" type="text" class="form-control" placeholder="시작 날짜" />
+														<span class="input-group-text">to</span>
+														<input id="date_timepicker_end" type="text" class="form-control" placeholder="끝 날짜" />
+													</div>
+												</div>
+											</div>
+
+											<!-- 수집 사이트 선택 -->
+											<div class="col-3">
+												<div class="form-group mb-0">
+													<label for="">수집 사이트 선택</label>
+													<select class="form-select">
+														<option value="" selected="">def</option>
+													</select>
+												</div>
+											</div><!-- end-of-row -->
+
+										</div>
+		
+										<!-- 검색어 추가 -->
+										<div class="mt-2 collapse" id="addingSearch">
+											<label for="">검색어 추가 :</label>
+											<div class="d-flex">
+												<!-- and & or -->
+												<div class="flex-shrink-0">
+													<select id="conjunction" class="form-select" name="conjunction">   
+														<option value="and">AND</option>   
+														<option value="or">OR</option>
+													</select>
+												</div>
+												<div class="flex-shrink-0 mx-2 col-2">
+													<!-- 분류 -->
+													<select id="sortTest" class="form-select">
+														<option selected="selected" value="">사이트</option>
+														<option value="">IP</option>
+														<option value="">Port</option>
+														<option value="">설명</option>
+														<option value="">분석 결과</option>
+														<option value="">AI 분석 결과</option>
+														<option value="">공격 유형</option>
+													</select>
+												</div>
+		
+												<!-- 검색창 -->
+												<div class="input-group">
+													<input id="addSearchTag" type="text" name="addSearchTag" class="form-control px-35px" placeholder="Filter orders" onkeydown="addSearch(this)">
+													<div class="input-group-text position-absolute top-0 bottom-0 bg-none border-0 start-0" style="z-index: 1020;">
+														<i class="fa fa-search opacity-5"></i>
+													</div>
+												</div>
+						
+												<!-- 검색 버튼 -->
+												<button 
+													class="btn btn-outline-default rounded-0 px-4 flex-shrink-0" 
+													type="button" 
+													onclick="addSearch(this)">
+														검색
+												</button>
+											</div>
+										</div>
+									</article>	
+
 									<!-- result seach tag div -->
-									<div id="searching_tag" class="d-flex flex-wrap"></div>
+									<div id="searching_tag" class="d-flex flex-wrap mt-2"></div>
 									
 									<!-- BEGIN table -->
 									<div class="table-responsive">
@@ -444,7 +549,7 @@
 									
 									<div class="col-xxl-3 col-xl-4 pb-4">
 										<!-- BEGIN card -->
-										<div class="card h-100">
+										<div class="card h-100" data-bs-toggle="modal" data-bs-target="#modalUri">
 											<div class="card-body h-100 p-1">
 												<a href="#" class="pos-product">
 													<div class="img" style="background-image: url(../assets/img/web-monitoring/capture-1.jpg)"></div>
@@ -487,9 +592,6 @@
 		
 		@@include('../partial/scroll-top-btn.html')
 
-		
-
-			
 	</div>
 	<!-- END #app -->
 	@@include('../partial/script.html', {"script": [
