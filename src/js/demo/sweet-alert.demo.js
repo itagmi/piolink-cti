@@ -15,7 +15,6 @@ $(document).ready(function() {
   // 적용 ui
   $(document).on("click", ".message-success", function(e) {
     // e.preventDefault(); //submit 버튼 클릭 시 이벤트 중단
-    console.log("work");
     //적용 전에 form에서 체크
     $(this)
       .closest("form")

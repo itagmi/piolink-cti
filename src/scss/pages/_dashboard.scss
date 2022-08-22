@@ -450,6 +450,20 @@ ul.web-monitoring-info {
   }
 }
 
+//웹 모니터링 - 드롭다운 z-index default
+.section-monitoring.card:after, .section-monitoring.card:before {
+  z-index: -1;
+}
+.pos .content-web-card {
+  .card:after, .card:before {
+    z-index: -1;
+  }
+  .card-body{
+    position: unset !important;
+    z-index: unset !important;
+  }
+} 
+
 //사이버 위협정보
 .url-analisys-detail {
   .table-dark {
