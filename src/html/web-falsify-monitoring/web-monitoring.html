@@ -118,51 +118,29 @@
 													<span class="badge bg-danger">악성</span>
 												</td>
 											</tr>
-											<tr>
+											<!-- <tr>
 												<th>파일 분석 결과</th>
 												<td>
 													<span class="badge bg-danger">악성</span>
 												</td>
-											</tr>
+											</tr> -->
 										</tbody>
 									</table>
 								</article>
 								<!-- AI 분석 예측 -->
 								<article class="col-6">
 									<h6 class="card-title me-2 mb-2">AI 분석 예측</h6>
-									<ul class="d-flex">
-										<li class="w-50">
-											<div class="chart-ai-analisys position-relative d-flex justify-content-center" style="width: 86px; margin: 0 auto;">
-												<canvas id="doughnutChart"></canvas>
-												<div class="label-text" style="top:0;">
-													93.1
-												</div>
+										<div class="chart-ai-analisys position-relative d-flex justify-content-center" style="width: 86px; margin: 0 auto;">
+											<canvas id="doughnutChart2"></canvas>
+											<div class="label-text" style="top:0;">
+												11
 											</div>
-											<small class="d-block text-center my-1">&lt;악성코드 유사도&gt;</small>
-											<!-- <canvas id="chart"></canvas> -->
-										</li>
-										<li class="w-50">
-											<div class="chart-ai-analisys position-relative d-flex justify-content-center" style="width: 86px; margin: 0 auto;">
-												<canvas id="doughnutChart2"></canvas>
-												<div class="label-text" style="top:0;">
-													11
-												</div>
-											</div>
-											<small class="d-block text-center  my-1">&lt;악성 URI 탐지 스코어&gt;</small>
-										</li>
-									</ul>
-									<table class="table table-sm table-th-dark border border-radius" style="font-size: 12px;margin-top: 1px;">
-										<tbody>
-											<tr>
-												<th>악성코드 유형</th>
-												<td>Trojan, CnC..</td>
-											</tr>
-										</tbody>
-									</table>
+										</div>
+										<small class="d-block text-center  mt-2">&lt;악성 URI 탐지 스코어&gt;</small>
 								</article>
 							</section>
 
-							<div class="section-alnalisys-log p-4">
+							<div class="section-alnalisys-log p-4 mt-4">
 								<div class="" id="">
 									<article class="d-flex mb-4 justify-content-between align-items-center">
 										<div class="d-flex align-items-center">
@@ -342,11 +320,10 @@
 													<td class="align-middle">
 														<ul>
 															<li>
-																분석 대상(File) : 
-																<span class="text-success">테스트 파일2.docx</span>
+																분석 대상(URL) : 
+																<span class="text-success">https://www.a-rt.com/</span>
 															</li>
 															<li>서버IP : 183.111.131.36:80 (  KR )</li>
-															<li>URL : <a href="#">https://www.a-rt.com/</a></li>
 														</ul>
 													</td>
 													<td class="align-middle">
@@ -375,11 +352,10 @@
 													<td class="align-middle">
 														<ul>
 															<li>
-																분석 대상(File) : 
-																<span class="text-danger">테스트 파일2.docx</span>
+																분석 대상(URL) : 
+																<span class="text-danger">https://www.a-rt.com/</span>
 															</li>
 															<li>서버IP : 183.111.131.36:80 (  KR )</li>
-															<li>URL : <a href="#">https://www.a-rt.com/</a></li>
 														</ul>
 													</td>
 													<td class="align-middle">
@@ -394,84 +370,6 @@
 													<td class="py-1 align-middle">
 														상태 : <span class="text-danger">예외</span><br>
 														예외 설정 : <span class="badge bg-danger">예외 취소</span>
-													</td>
-												</tr>
-												<tr>
-													<td class="w-10px align-middle">
-														2021-11-17 <br>
-														10:01:22
-													</td>
-													<td class="align-middle">
-														ABC 마트<br>
-														(192.168.1.96:8443)
-													</td>
-													<td class="align-middle">
-														<ul>
-															<li>
-																분석 대상(File) : 
-																<span class="text-success">테스트 파일2.docx</span>
-															</li>
-															<li>MD5 : 3b8b01cd9807800da72400a6a03a831b</li>
-															<li>파일 크기 : 40.9 MB  (42,902,920 byte)</li>
-															<li>행위 분석 완료 시간 : 2022-05-24 12:25:54 (43초)</li>
-															<li>AI 분석 완료 시간 :    2022-05-24 12:27:54 (120초)</li>
-															<li>서버IP : 183.111.131.36:80 (  KR )</li>
-															<li>총 분석 시간 : 163 초</li>
-														</ul>
-													</td>
-													<td class="align-middle">
-														<ul>
-															<li>
-																AV 분석 :
-																<span class="badge bg-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center">
-																	정상
-																</span>
-															</li>
-															<li class="d-flex align-items-center">
-																정적 분석 : 
-																<input 
-																id="input-1-ltr-star-xs" 
-																name="input-1-ltr-star-xs" 
-																class="kv-ltr-theme-fas-star rating-loading" 
-																value="3" 
-																dir="ltr" 
-																data-size="xs" />
-															</li>
-															<li class="d-flex align-items-center">
-																동적 분석 : 
-																<input 
-																id="input-1-ltr-star-xs" 
-																name="input-1-ltr-star-xs" 
-																class="kv-ltr-theme-fas-star rating-loading" 
-																value="3" 
-																dir="ltr" 
-																data-size="xs" />
-															</li>
-															<li>
-																평판 분석 :
-																<span class="text-success">0/76</span>
-															</li>
-															<li>
-																분석 결과 : 
-																<span class="badge bg-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center">
-																	정상
-																</span>
-															</li>
-														</ul>
-													</td>
-													<td class="align-middle">
-														10.113
-													</td>
-													<td class="py-1 align-middle">
-														상태: <span class="text-success">정상</span> <br>
-														예외 설정 :
-														<span class="badge bg-success">
-															예외 적용
-														</span> <br>
-														다운로드 :
-														<span class="badge bg-primary">
-															다운 로드
-														</span>
 													</td>
 												</tr>
 											</tbody>
@@ -717,7 +615,7 @@
 																<button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 																	<i class="bi bi-gear-fill"></i>
 																</button>
-																<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="">
+																<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 																	<li class="d-flex flex-column px-2">
 																		<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalModify">수정</button>
 														
@@ -757,7 +655,7 @@
 																<button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 																	<i class="bi bi-gear-fill"></i>
 																</button>
-																<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="">
+																<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 																	<li class="d-flex flex-column px-2">
 																		<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalModify">수정</button>
 														
@@ -828,228 +726,5 @@
 
 		'../assets/js/demo/common.demo.js',
 		"../assets/js/demo/pos-customer-order.demo.js",
+		'../assets/js/pages/web-falsify-monitoring/web-monitoring.js'
 	]})
-	
-	<script>
-		//table tr을 클릭 하면 모달창 show
-		$('.pos-content-container').on('click', '.card', function (e) {
-			$('#modalUri').modal('show');
-		})
-
-		//button modal event 흐름 막는 스크립트
-		$('.pos-content-container').on('click', 'button', function (e) {
-			e.stopPropagation();
-		})
-
-		//수정하기 버튼 toggle 
-		$('.webMonitoringModify').on('click', function() {
-			const $this = $(this);
-
-			$this.toggleClass('def');
-
-			if($this.hasClass('def')) {
-				$this.text('수정하기').addClass('btn-warning').removeClass('btn-success message-modify');
-				$('.modify-web-monitoring input').attr('readonly', true);
-				$('.modify-web-monitoring select').attr('disabled', true);
-				$this.attr('type', 'submit');
-			} else {
-				$this.text('적용하기').addClass('btn-success message-modify').removeClass('btn-warning');
-				$('.modify-web-monitoring input').attr('readonly', false);
-				$('.modify-web-monitoring select').attr('disabled', false);
-				$this.attr('type', 'button');
-			}
-		})
-
-		//삭제 알림창 ui
-		$('.message-delete').click(function(){
-			Swal.fire({
-				title: "정말로 삭제 하시겠습니까?",
-				type: "warning",
-				showCancelButton: true,
-				confirmButtonColor: "#dc3741",
-				confirmButtonClass: "danger-btn-focus",
-				// cancelButtonColor: "#f46a6a",
-				confirmButtonText: "네, 지우겠습니다.",
-			}).then(function(result) {
-				if (result.value) {
-					Swal.fire("삭제", "삭제 되었습니다", "success");
-				}
-			});
-		})
-				
-		//AI 분석 예측 결과 - 유사도, 스코어 - chart.js
-		const ctx = document.getElementById('doughnutChart');
-		const ctx2 = document.getElementById('doughnutChart2');
-
-		// chart1 and chart2 use "plugin"
-		let chart1 = new Chart(ctx, {
-			type: 'doughnut',
-			data: {
-				// labels: ['Total Visitor'],
-				datasets: [{
-					data: [90,100],
-					backgroundColor: [app.color.theme, app.color.white, app.color.gray900],
-					hoverBackgroundColor: [app.color.theme, app.color.white, app.color.gray900],
-					borderWidth: 0,
-				}]
-			},
-			options: {
-				responsive:true,
-				cutout: 30,
-				tooltips: {
-						enabled: false
-				}
-			}
-		});
-
-		let chart2 = new Chart(ctx2, {
-			type: 'doughnut',
-			data: {
-				// labels: ['Total Visitor'],
-				datasets: [{
-					data: [90,100],
-					backgroundColor: [app.color.theme, app.color.white, app.color.gray900],
-					hoverBackgroundColor: [app.color.theme, app.color.white, app.color.gray900],
-					borderWidth: 0,
-				}]
-			},
-			options: {
-				responsive:true,
-				cutout: 30,
-				tooltips: {
-						enabled: false
-				}
-			}
-		});
-						
-		//인풋에 검색어 엔터 시 tag ui 출력
-		let searchTags = [];
-
-		function search(ele) {
-			if (event.key === "Enter" || event.type === "click") {
-				//inut value
-				let txtval = document.querySelector('input[name="searchTag"]').value;
-
-				if (searchTags.includes(txtval) || searchTags.length > 16) {
-					// console.log("포함");
-				} else if (txtval == "") {
-					//do nothing
-				} else {
-					// console.log("불포함");
-
-					searchTags.push(txtval);
-
-					const lastValue = searchTags[searchTags.length - 1];
-
-					let html = `<div id="seachTagBtn" class="ui-searching-tag alert alert-primary alert-dismissible fade show me-2 mb-2" role="alert">
-						${lastValue}
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-						</button>
-					</div>`;
-
-					$("#searching_tag").append(html);
-				}
-			}
-		}
-
-		//인풋에 추가 검색어 엔터 시 tag ui 출력
-		let addSearchTags = [];
-
-		function addSearch(ele) {
-			if (event.key === "Enter" || event.type === "click") {
-				//inut value
-				let txtval = document.querySelector('input[name="addSearchTag"]').value;
-				let conjunction = document.getElementById("conjunction").value;
-				let sortTest = document.getElementById("sortTest").value;
-
-				if (searchTags.includes(txtval) || searchTags.length > 16) {
-					// console.log("포함");
-				} else if (txtval == "") {
-					//do nothing
-				} else {
-					// console.log("불포함");
-
-					searchTags.push(txtval);
-
-					const lastValue = searchTags[searchTags.length - 1];
-
-					let html = `<div id="seachTagBtn" class="ui-searching-tag alert alert-primary alert-dismissible fade show me-2 mb-2" role="alert">
-						<span class="badge bg-secondary">${conjunction}</span>
-						<span class="badge bg-secondary">${sortTest}</span>
-						${lastValue}
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-						</button>
-					</div>`;
-
-					$("#searching_tag").append(html);
-				}
-			}
-		}
-
-		// input mirroring
-		$("#searchVal").bind("keypress keyup blur", function() {
-			$("#fillterVal").val($(this).val());
-		});
-
-		$("#fillterVal").bind("keypress keyup blur", function() {
-			$("#searchVal").val($(this).val());
-		});
-
-		// rating star
-		$(".kv-ltr-theme-fas-star").rating({
-			displayOnly: true,
-			hoverOnClear: false,
-			theme: "krajee-fas",
-			defaultCaption: "{rating}",
-			starCaptions: function(rating) {
-				// return rating == 1 ? 'One heart' : rating + ' hearts';
-			},
-			filledStar: '<i class="fas fa-circle"></i>',
-			emptyStar: '<i class="far fa-circle"></i>',
-		});
-
-		// datetime picker
-		jQuery.datetimepicker.setLocale("kr");
-
-		jQuery(function() {
-			jQuery("#date_timepicker_start").datetimepicker({
-				i18n: {
-					de: {
-						months: [
-							"1월",
-							"2월",
-							"3월",
-							"4월",
-							"5월",
-							"6월",
-							"7월",
-							"8월",
-							"9월",
-							"10월",
-							"11월",
-							"12월",
-						],
-						dayOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
-					},
-				},
-				format: "Y/m/d H:i",
-				onShow: function(ct) {
-					this.setOptions({
-						maxDate: jQuery("#date_timepicker_end").val()
-							? jQuery("#date_timepicker_end").val()
-							: false,
-					});
-				},
-			});
-			jQuery("#date_timepicker_end").datetimepicker({
-				format: "Y/m/d H:i",
-				onShow: function(ct) {
-					this.setOptions({
-						minDate: jQuery("#date_timepicker_start").val()
-							? jQuery("#date_timepicker_start").val()
-							: false,
-					});
-				},
-			});
-		});
-	</script>
