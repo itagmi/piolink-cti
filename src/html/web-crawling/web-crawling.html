@@ -1267,7 +1267,7 @@
 																				<label for="chkAccProcess" class="mb-0">연관 프로세스</label>
 																			</div>
 																			<div class="ml-2" style="display: none">
-																				<select name="ddlProcType" id="ddlProcType" class="form-control form-control-2 smal-dropdown margin-top3">
+																				<select name="ddlProcType" id="ddlProcType" class="form-select form-control-2 smal-dropdown margin-top3">
 																					<option value="'Proc'">프로세스</option>
 																				</select>
 																			</div>
@@ -1392,12 +1392,12 @@
 																				<label for="chkAccProcess" class="mb-0">연관 프로세스</label>
 																			</div>
 																			<div class="ml-2" style="display: none">
-																				<select name="ddlProcType" id="ddlProcType" class="form-control form-control-2 smal-dropdown margin-top3">
+																				<select name="ddlProcType" id="ddlProcType" class="form-select form-control-2 smal-dropdown margin-top3">
 																					<option value="'Proc'">프로세스</option>
 																				</select>
 																			</div>
 																			<div class="ml-2">
-																				<select name="ddlProcResult" id="ddlProcResult" class="form-control">
+																				<select name="ddlProcResult" id="ddlProcResult" class="form-select">
 																					<option value="">전체</option>
 																					<option value="supicious">악성</option>
 																				</select>
@@ -1444,7 +1444,14 @@
 																							</div>
 																					</td>
 																					<td class="fit">
-																						<input type="hidden" value="3" disabled="disabled" class="rating" data-filled="mdi mdi-circle text-warning" data-empty="mdi mdi-circle-outline text-warning">
+																						<input type="text"
+																							id="" 
+																							name="input-1-ltr-star-xs" 
+																							class="kv-ltr-theme-fas-star rating-loading" 
+																							value="4" 
+																							dir="ltr" 
+																							data-size="xs"
+																						/>
 																					</td>
 																					<td></td>
 																					<td></td>
@@ -1511,12 +1518,12 @@
 																				<label for="chkAccProcess" class="mb-0">연관 프로세스</label>
 																			</div>
 																			<div class="ml-2" style="display: none">
-																				<select name="ddlProcType" id="ddlProcType" class="form-control form-control-2 smal-dropdown margin-top3">
+																				<select name="ddlProcType" id="ddlProcType" class="form-select form-control-2 smal-dropdown margin-top3">
 																					<option value="'Proc'">프로세스</option>
 																				</select>
 																			</div>
 																			<div class="ml-2">
-																				<select name="ddlProcResult" id="ddlProcResult" class="form-control">
+																				<select name="ddlProcResult" id="ddlProcResult" class="form-select">
 																					<option value="">전체</option>
 																					<option value="supicious">악성</option>
 																				</select>
@@ -1636,12 +1643,12 @@
 																					<label for="chkAccProcess" class="mb-0">연관 프로세스</label>
 																				</div>
 																				<div class="ml-2" style="display: none">
-																					<select name="ddlProcType" id="ddlProcType" class="form-control form-control-2 smal-dropdown margin-top3">
+																					<select name="ddlProcType" id="ddlProcType" class="form-select form-control-2 smal-dropdown margin-top3">
 																						<option value="'Proc'">프로세스</option>
 																					</select>
 																				</div>
 																				<div class="ml-2">
-																					<select name="ddlProcResult" id="ddlProcResult" class="form-control">
+																					<select name="ddlProcResult" id="ddlProcResult" class="form-select">
 																						<option value="">전체</option>
 																						<option value="supicious">악성</option>
 																					</select>
